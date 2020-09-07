@@ -1,0 +1,15 @@
+.profile {
+	grid-area: cont;
+	background-color: rgb(104, 81, 148);
+}
+
+.image {
+	width: 100%;
+}
+
+.avatar {
+	width: 200px;
+}
+
+.description {
+}

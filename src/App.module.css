@@ -1,0 +1,11 @@
+.wrapper {
+	display: grid;
+	grid-template-areas:
+		"head head"
+		"nav cont";
+	grid-template-rows: 60px 1fr;
+	grid-template-columns: 2fr 10fr;
+	gap: 10px;
+	width: 1200px;
+	margin: 10px auto;
+}
