@@ -4,7 +4,7 @@ import MyPosts from "./MyPosts/MyPosts";
 
 const Profile = () => {
 	return (
-		<main className={styles.gridContent}>
+		<div>
 			<img
 				src="https://image.shutterstock.com/image-vector/wide-space-image-260nw-1129045574.jpg"
 				className={styles.image}
@@ -19,7 +19,7 @@ const Profile = () => {
 				<div className={styles.description}>description</div>
 			</div>
 			<MyPosts />
-		</main>
+		</div>
 	);
 };
 
