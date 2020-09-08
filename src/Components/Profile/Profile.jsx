@@ -1,11 +1,12 @@
 import React from "react";
 import classNames from "./Profile.module.css";
+import MyPosts from "./MyPosts/MyPosts";
 
 const Profile = () => {
 	return (
 		<main className={classNames.profile}>
 			<img
-				src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSqE3wagRFYOebX6edSEZ8VLcWW-QWRyiIqLw&usqp=CAU"
+				src="https://image.shutterstock.com/image-vector/wide-space-image-260nw-1129045574.jpg"
 				className={classNames.image}
 				alt="sea"
 			/>
@@ -17,14 +18,7 @@ const Profile = () => {
 				/>
 				<div className={classNames.description}>description</div>
 			</div>
-			<div>
-				<div>My post</div>
-				<div>New post</div>
-			</div>
-			<div>
-				<div>post 1</div>
-				<div>post 2</div>
-			</div>
+			<MyPosts />
 		</main>
 	);
 };
