@@ -2,6 +2,12 @@
 	grid-area: nav;
 	background-color: rgb(255, 255, 255);
 	border-right: 1px solid rgb(204, 204, 255);
+	margin-top: -50px;
+	margin-left: 10vw;
+	padding: 30px 0;
+	box-shadow: 0 -8px 16px -6px rgba(0, 0, 0, 0.5);
+	-webkit-box-shadow: 0 -8px 16px -6px rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 0 -8px 16px -6px rgba(0, 0, 0, 0.5);
 }
 
 .item {
@@ -17,7 +23,7 @@
 	line-height: 80px;
 	color: rgb(150, 204, 250);
 	display: block;
-	width: 80%;
+	width: 70%;
 	margin: auto;
 }
 

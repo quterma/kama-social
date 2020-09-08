@@ -1,16 +1,25 @@
+body {
+	background: repeat url(./Images/background_image.png);
+}
+
 .wrapper {
 	display: grid;
 	grid-template-areas:
 		"head head"
 		"nav cont";
 	grid-template-rows: 200px 1fr;
-	grid-template-columns: 2fr 10fr;
-	gap: 10px;
-	width: 1440px;
+	grid-template-columns: 2fr 6fr;
+	gap: 20px;
+	width: 100%;
 	margin: 10px auto;
 }
 
 .gridContent {
 	grid-area: cont;
-	background-color: rgb(104, 81, 148);
+	background-color: rgb(255, 255, 255);
+	margin-right: 10vw;
+	margin-top: -50px;
+	box-shadow: 0 -8px 16px -6px rgba(0, 0, 0, 0.5);
+	-webkit-box-shadow: 0 -8px 16px -6px rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 0 -8px 16px -6px rgba(0, 0, 0, 0.5);
 }

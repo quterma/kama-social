@@ -20,7 +20,7 @@ const Navbar = () => {
 					activeClassName={styles.active}
 					to="/Dialogs"
 				>
-					Messages
+					Dialogs
 				</NavLink>
 			</div>
 			<div className={styles.item}>
