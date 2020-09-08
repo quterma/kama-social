@@ -9,3 +9,8 @@
 	width: 1440px;
 	margin: 10px auto;
 }
+
+.gridContent {
+	grid-area: cont;
+	background-color: rgb(104, 81, 148);
+}
