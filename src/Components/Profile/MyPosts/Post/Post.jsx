@@ -10,7 +10,7 @@ const Post = (props) => {
 				alt="avatar"
 			/>
 			<p className={styles.text}>{props.message}</p>
-			<p className={styles.text}> this post got {props.likes} likes</p>
+			<p className={styles.text}>-- {props.likes} likes</p>
 		</div>
 	);
 };
