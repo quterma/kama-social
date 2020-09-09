@@ -32,22 +32,18 @@ const Dialogs = (props) => {
 		{ id: 5, message: "Yo" },
 	];
 
+	const personsElements = persons.map((person) => (
+		<Person name={person.name} id={person.id} />
+	));
+
+	const messagesElements = messages.map((message) => (
+		<Message id={message.id} message={message.message} />
+	));
+
 	return (
 		<div className={styles.dialogs}>
-			<div className={styles.persons}>
-				<Person name={persons[0].name} id={persons[0].id} />
-				<Person name={persons[1].name} id={persons[1].id} />
-				<Person name={persons[2].name} id={persons[2].id} />
-				<Person name={persons[3].name} id={persons[3].id} />
-				<Person name={persons[4].name} id={persons[4].id} />
-			</div>
-			<div className={styles.chat}>
-				<Message id={messages[0].id} message={messages[0].message} />
-				<Message id={messages[1].id} message={messages[1].message} />
-				<Message id={messages[2].id} message={messages[2].message} />
-				<Message id={messages[3].id} message={messages[3].message} />
-				<Message id={messages[4].id} message={messages[4].message} />
-			</div>
+			<div className={styles.persons}>{personsElements}</div>
+			<div className={styles.chat}>{messagesElements}</div>
 		</div>
 	);
 };

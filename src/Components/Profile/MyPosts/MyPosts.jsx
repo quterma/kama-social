@@ -8,6 +8,10 @@ const MyPosts = () => {
 		{ id: 2, post: "it is my 1st post", likes: 20 },
 	];
 
+	const postsElements = posts.map((post) => (
+		<Post message={post.post} likes={post.likes} />
+	));
+
 	return (
 		<div className={styles.wrapper}>
 			<div>My post</div>
@@ -21,10 +25,7 @@ const MyPosts = () => {
 				></textarea>
 				<button className={styles.button}>Add post</button>
 			</div>
-			<div className={styles.posts}>
-				<Post message={posts[0].post} likes={posts[0].likes} />
-				<Post message={posts[1].post} likes={posts[1].likes} />
-			</div>
+			<div className={styles.posts}>{postsElements}</div>
 		</div>
 	);
 };

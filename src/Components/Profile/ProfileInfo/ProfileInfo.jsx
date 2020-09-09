@@ -5,7 +5,7 @@ const ProfileInfo = () => {
 	return (
 		<div>
 			<img
-				src="https://image.shutterstock.com/image-vector/wide-space-image-260nw-1129045574.jpg"
+				src="https://picsum.photos/1000/150"
 				className={styles.image}
 				alt="sea"
 			/>
@@ -13,7 +13,7 @@ const ProfileInfo = () => {
 				<img
 					className={styles.avatar}
 					alt="avatar"
-					src="https://post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/02/322868_1100-800x825.jpg"
+					src="https://picsum.photos/200"
 				/>
 				<div className={styles.description}>description</div>
 			</div>
