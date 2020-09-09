@@ -7,24 +7,6 @@
 	padding: 20px;
 }
 
-.person {
-	padding: 20px;
-	font-family: "Gorditas", cursive;
-	font-size: 18px;
-	color: rgb(90, 63, 5);
-}
-
-.active {
-	color: rgb(229, 34, 38);
-}
-
 .chat {
 	padding: 20px;
-}
-
-.message {
-	padding: 10px;
-	font-size: 18px;
-	color: rgb(82, 82, 82);
-	font-family: "Open Sans", sans-serif;
 }

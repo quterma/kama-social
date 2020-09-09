@@ -1,0 +1,10 @@
+.person {
+	padding: 20px;
+	font-family: "Gorditas", cursive;
+	font-size: 18px;
+	color: rgb(90, 63, 5);
+}
+
+.active {
+	color: rgb(229, 34, 38);
+}
