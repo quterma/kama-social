@@ -7,11 +7,36 @@ const state = {
 	},
 	dialogsPage: {
 		persons: [
-			{ id: 1, name: "person-1" },
-			{ id: 2, name: "person-2" },
-			{ id: 3, name: "person-3" },
-			{ id: 4, name: "person-4" },
-			{ id: 5, name: "person-5" },
+			{
+				id: 1,
+				name: "person-1",
+				avatar: "https://picsum.photos/45",
+				isFriend: false,
+			},
+			{
+				id: 2,
+				name: "person-2",
+				avatar: "https://picsum.photos/46",
+				isFriend: true,
+			},
+			{
+				id: 3,
+				name: "person-3",
+				avatar: "https://picsum.photos/47",
+				isFriend: true,
+			},
+			{
+				id: 4,
+				name: "person-4",
+				avatar: "https://picsum.photos/48",
+				isFriend: false,
+			},
+			{
+				id: 5,
+				name: "person-5",
+				avatar: "https://picsum.photos/49",
+				isFriend: true,
+			},
 		],
 		messages: [
 			{ id: 1, message: "Hi !" },

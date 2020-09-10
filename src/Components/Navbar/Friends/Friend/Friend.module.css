@@ -1,9 +1,10 @@
 .item {
-	padding: 20px;
 	font-family: "Gorditas", cursive;
 	font-size: 18px;
 	color: rgb(90, 63, 5);
+	margin: 0 5px;
 	display: flex;
+	flex-direction: column;
 	align-items: center;
 }
 
@@ -18,5 +19,5 @@
 }
 
 .name {
-	margin-left: 10px;
+	margin-top: 10px;
 }

@@ -11,7 +11,8 @@ body {
 	grid-template-columns: 2fr 6fr;
 	gap: 20px;
 	width: 100%;
-	margin: 10px auto;
+	margin: 0 auto;
+	height: 98vh;
 }
 
 .gridContent {

@@ -7,15 +7,19 @@ import Message from "./Message/Message";
 // Dialogs вызывает через map следующие компоненты (с пропсами): Person, Message
 const Dialogs = (props) => {
 	const personsElements = props.state.persons.map((person) => (
-		<Person name={person.name} id={person.id} />
+		<Person name={person.name} id={person.id} avatar={person.avatar} />
 	));
 
-	const messagesElements = props.state.messages.map((message) => (
-		<Message id={message.id} message={message.message} />
-	));
+	const messagesElements = props.state.messages.map((message) => {
+		let place = "left";
+		if (message.id % 2 === 0) {
+			place = "right";
+		}
+		return <Message id={message.id} message={message.message} place={place} />;
+	});
 
 	return (
-		<div className={styles.dialogs}>
+		<div className={styles.wrapper}>
 			<div className={styles.persons}>{personsElements}</div>
 			<div className={styles.chat}>{messagesElements}</div>
 		</div>

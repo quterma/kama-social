@@ -1,0 +1,21 @@
+.wrapper {
+	margin-top: 20px;
+}
+
+.title {
+	font-family: "Gorditas", cursive;
+	font-size: 30px;
+	font-weight: 700;
+	text-transform: capitalize;
+	line-height: 80px;
+	color: rgb(150, 204, 250);
+	display: block;
+	width: 70%;
+	margin: auto;
+}
+
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

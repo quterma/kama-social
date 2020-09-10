@@ -1,10 +1,8 @@
 import React from "react";
-import styles from "./Person.module.css";
+import styles from "./Friend.module.css";
 import { NavLink } from "react-router-dom";
 
-// Person вызывается из Dialogs.js (с пропсами).
-// Person отрисовывает 1 элемент Person
-const Person = (props) => {
+const Friend = (props) => {
 	const path = "/dialogs/" + props.id;
 	return (
 		<div className={styles.item}>
@@ -20,4 +18,4 @@ const Person = (props) => {
 	);
 };
 
-export default Person;
+export default Friend;

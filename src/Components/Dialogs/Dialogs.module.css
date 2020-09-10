@@ -1,12 +1,20 @@
-.dialogs {
+.wrapper {
 	display: grid;
 	grid-template-columns: 1fr 4fr;
+	height: 100%;
 }
 
 .persons {
 	padding: 20px;
+	border-right: 1px solid rgb(107, 173, 204);
 }
 
 .chat {
 	padding: 20px;
+	width: 400px;
+	background: rgba(128, 128, 128, 0.3);
+	margin-top: 20px;
+	margin-left: 20px;
+	height: 500px;
+	border-radius: 20px;
 }

@@ -1,4 +1,4 @@
-.nav {
+.wrapper {
 	grid-area: nav;
 	background-color: rgb(255, 255, 255);
 	border-right: 1px solid rgb(204, 204, 255);
@@ -30,4 +30,8 @@
 .active {
 	color: rgb(33, 49, 138);
 	background: no-repeat center / 100% url("./active_nav.png");
+}
+
+.margin50 {
+	margin-top: 50px;
 }
