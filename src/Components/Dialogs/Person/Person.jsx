@@ -2,6 +2,8 @@ import React from "react";
 import styles from "./Person.module.css";
 import { NavLink } from "react-router-dom";
 
+// Person вызывается из Dialogs.js (с пропсами).
+// Person отрисовывает 1 элемент Person
 const Person = (props) => {
 	const path = "/dialogs/" + props.id;
 	return (

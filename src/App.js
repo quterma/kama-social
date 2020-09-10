@@ -10,6 +10,8 @@ import Settings from "./Components/Settings/Settings";
 import Music from "./Components/Music/Music";
 import News from "./Components/News/News";
 
+// App рендерится из index.js (с пропсами).
+// App вызывает через BrowserRouter следующие компоненты (с пропсами): Header, Navbar, Profile/Dialogs/News/Music/Settings
 const App = (props) => {
 	return (
 		<BrowserRouter>
@@ -19,13 +21,11 @@ const App = (props) => {
 				<div className={styles.gridContent}>
 					<Route
 						path="/profile"
-						render={() => <Profile posts={props.posts} />}
+						render={() => <Profile state={props.state.profilePage} />}
 					/>
 					<Route
 						path="/dialogs"
-						render={() => (
-							<Dialogs persons={props.persons} messages={props.messages} />
-						)}
+						render={() => <Dialogs state={props.state.dialogsPage} />}
 					/>
 					<Route path="/news" component={News} />
 					<Route path="/music" component={Music} />

@@ -1,14 +1,16 @@
 import React from "react";
 import styles from "./Dialogs.module.css";
-import Person from "./Persons/Person";
-import Message from "./Messages/Message";
+import Person from "./Person/Person";
+import Message from "./Message/Message";
 
+// Dialogs вызывается из App.js (с пропсами).
+// Dialogs вызывает через map следующие компоненты (с пропсами): Person, Message
 const Dialogs = (props) => {
-	const personsElements = props.persons.map((person) => (
+	const personsElements = props.state.persons.map((person) => (
 		<Person name={person.name} id={person.id} />
 	));
 
-	const messagesElements = props.messages.map((message) => (
+	const messagesElements = props.state.messages.map((message) => (
 		<Message id={message.id} message={message.message} />
 	));
 
