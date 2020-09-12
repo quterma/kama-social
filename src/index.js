@@ -3,14 +3,14 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import state from "./Redux/state";
 import { BrowserRouter } from "react-router-dom";
+import state, { addMyMessage, addMyPost } from "./Redux/state";
 
 // рендерит App с пропсами (объект state из ./Redux/state.js)
 ReactDOM.render(
 	<React.StrictMode>
 		<BrowserRouter>
-			<App state={state} />
+			<App state={state} addMyPost={addMyPost} addMyMessage={addMyMessage} />
 		</BrowserRouter>
 	</React.StrictMode>,
 	document.getElementById("root")

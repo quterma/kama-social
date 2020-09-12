@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Dialogs.module.css";
 import Person from "./Person/Person";
 import Message from "./Message/Message";
+import MyMessage from "./MyMessage/MyMessage";
 
 // Dialogs вызывается из App.js (с пропсами).
 // Dialogs вызывает через map следующие компоненты (с пропсами): Person, Message
@@ -22,10 +23,7 @@ const Dialogs = (props) => {
 		<div className={styles.wrapper}>
 			<div className={styles.persons}>{personsElements}</div>
 			<div className={styles.chat}>{messagesElements}</div>
-			<div className={styles.myMessage}>
-				<textarea className={styles.textarea} name="" id=""></textarea>
-				<button className={styles.button}></button>
-			</div>
+			<MyMessage addMyMessage={props.addMyMessage} />
 		</div>
 	);
 };

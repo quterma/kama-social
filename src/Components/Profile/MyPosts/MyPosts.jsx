@@ -6,9 +6,14 @@ const MyPosts = (props) => {
 	const postsElements = props.posts.map((post) => (
 		<Post message={post.post} likes={post.likes} />
 	));
-	const newPostElement = React.createRef();
+	const newPostElement = React.createRef(); // reference to textarea
 
-	const addPost = () => alert(newPostElement.current.value);
+	// get value from textarea and alert it
+	const addMyPost = () => {
+		const text = newPostElement.current.value;
+		props.addMyPost(text);
+	};
+
 	return (
 		<div className={styles.wrapper}>
 			<div>My post</div>
@@ -19,7 +24,7 @@ const MyPosts = (props) => {
 					name=""
 					id=""
 				></textarea>
-				<button className={styles.button} onClick={addPost}>
+				<button className={styles.button} onClick={addMyPost}>
 					Add post
 				</button>
 			</div>

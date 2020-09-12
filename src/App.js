@@ -20,11 +20,21 @@ const App = (props) => {
 			<div className={styles.gridContent}>
 				<Route
 					path="/profile"
-					render={() => <Profile state={props.state.profilePage} />}
+					render={() => (
+						<Profile
+							state={props.state.profilePage}
+							addMyPost={props.addMyPost}
+						/>
+					)}
 				/>
 				<Route
 					path="/dialogs"
-					render={() => <Dialogs state={props.state.dialogsPage} />}
+					render={() => (
+						<Dialogs
+							state={props.state.dialogsPage}
+							addMyMessage={props.addMyMessage}
+						/>
+					)}
 				/>
 				<Route path="/news" component={News} />
 				<Route path="/music" component={Music} />

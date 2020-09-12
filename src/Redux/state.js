@@ -48,4 +48,14 @@ const state = {
 	},
 };
 
+export const addMyPost = (post) => {
+	const newPost = { id: 10, post: post, likes: 0 };
+	state.profilePage.posts.push(newPost);
+};
+
+export const addMyMessage = (message) => {
+	const newMessage = { id: 10, message: message };
+	state.dialogsPage.messages.push(newMessage);
+};
+
 export default state;
