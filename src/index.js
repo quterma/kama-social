@@ -1,20 +1,10 @@
-import React from "react";
-import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import { BrowserRouter } from "react-router-dom";
-import state, { addMyMessage, addMyPost } from "./Redux/state";
+import { rerenderEntireTree } from "./render";
+import state from "./Redux/state";
 
-// рендерит App с пропсами (объект state из ./Redux/state.js)
-ReactDOM.render(
-	<React.StrictMode>
-		<BrowserRouter>
-			<App state={state} addMyPost={addMyPost} addMyMessage={addMyMessage} />
-		</BrowserRouter>
-	</React.StrictMode>,
-	document.getElementById("root")
-);
+// импортирует state из state и вызывает rerender с передачей стейта
+rerenderEntireTree(state);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

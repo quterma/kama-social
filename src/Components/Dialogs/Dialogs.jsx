@@ -7,6 +7,7 @@ import MyMessage from "./MyMessage/MyMessage";
 // Dialogs вызывается из App.js (с пропсами).
 // Dialogs вызывает через map следующие компоненты (с пропсами): Person, Message
 const Dialogs = (props) => {
+	console.log(props);
 	const personsElements = props.state.persons.map((person) => (
 		<Person name={person.name} id={person.id} avatar={person.avatar} />
 	));

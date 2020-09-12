@@ -17,10 +17,12 @@
 	text-align: left;
 	border-left: 2px solid rgb(171, 49, 253);
 	border-radius: 10px;
+	margin-top: 10px;
 }
 
 .right {
 	text-align: right;
 	border-right: 2px solid rgb(253, 114, 49);
 	border-radius: 10px;
+	margin-top: 10px;
 }

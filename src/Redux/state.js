@@ -1,6 +1,10 @@
+import { rerenderEntireTree } from "../render"; // импортирует ререндер для вызова в add post и addmessage
+
 const state = {
+	// глобальный стейт
 	profilePage: {
 		posts: [
+			// мои (?) мессаги в Профиле
 			{ id: 1, post: "Hi, how r u?", likes: 15 },
 			{ id: 2, post: "it is my 1st post", likes: 20 },
 		],
@@ -48,14 +52,18 @@ const state = {
 	},
 };
 
+// вызывается в Profile для добавления поста, затем вызывает rerender для переотрисовки UI
 export const addMyPost = (post) => {
 	const newPost = { id: 10, post: post, likes: 0 };
 	state.profilePage.posts.push(newPost);
+	rerenderEntireTree(state);
 };
 
+// вызывается в Dialogs для добавления мессаги, затем вызывает rerender для переотрисовки UI
 export const addMyMessage = (message) => {
 	const newMessage = { id: 10, message: message };
 	state.dialogsPage.messages.push(newMessage);
+	rerenderEntireTree(state);
 };
 
 export default state;
