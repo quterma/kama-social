@@ -22,6 +22,10 @@ const Dialogs = (props) => {
 		<div className={styles.wrapper}>
 			<div className={styles.persons}>{personsElements}</div>
 			<div className={styles.chat}>{messagesElements}</div>
+			<div className={styles.myMessage}>
+				<textarea className={styles.textarea} name="" id=""></textarea>
+				<button className={styles.button}></button>
+			</div>
 		</div>
 	);
 };

@@ -4,11 +4,14 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import state from "./Redux/state";
+import { BrowserRouter } from "react-router-dom";
 
 // рендерит App с пропсами (объект state из ./Redux/state.js)
 ReactDOM.render(
 	<React.StrictMode>
-		<App state={state} />
+		<BrowserRouter>
+			<App state={state} />
+		</BrowserRouter>
 	</React.StrictMode>,
 	document.getElementById("root")
 );
