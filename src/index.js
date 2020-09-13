@@ -4,13 +4,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
-// import state, {
-// 	subscribe,
-// 	addMyMessage,
-// 	addMyPost,
-// 	updateNewMessageText,
-// 	updateNewPostText,
-// } from "./Redux/state";
 import store from "./Redux/store";
 
 // рендерит App с пропсами (объект state из ./Redux/state.js)
@@ -18,13 +11,7 @@ const rerenderEntireTree = (state) => {
 	ReactDOM.render(
 		<React.StrictMode>
 			<BrowserRouter>
-				<App
-					store={store}
-					// addMyPost={store.addMyPost}
-					// addMyMessage={store.addMyMessage}
-					// updateNewPostText={store.updateNewPostText}
-					// updateNewMessageText={store.updateNewMessageText}
-				/>
+				<App store={store} />
 			</BrowserRouter>
 		</React.StrictMode>,
 		document.getElementById("root")
@@ -32,7 +19,7 @@ const rerenderEntireTree = (state) => {
 };
 
 // импортирует вызывает rerender с передачей стейта для последующей передачи стейта в пропсы
-rerenderEntireTree(store.state);
+rerenderEntireTree(store.getState());
 
 // вызывает импортированную из стейта функцию для передачи в стейт ререндера
 store.subscribe(rerenderEntireTree);

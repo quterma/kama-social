@@ -1,5 +1,5 @@
 const store = {
-	state: {
+	_state: {
 		profilePage: {
 			posts: [
 				// мои (?) мессаги в Профиле
@@ -52,52 +52,57 @@ const store = {
 		},
 	},
 
-	// вызывается в Profile для добавления поста, затем вызывает rerender для переотрисовки UI
-	addMyPost() {
-		if (this.state.profilePage.newPostText === "") return;
-		const newPost = {
-			id: 10,
-			post: this.state.profilePage.newPostText,
-			likes: 0,
-		};
-		this.state.profilePage.posts.push(newPost);
-		this.state.profilePage.newPostText = "";
-		rerenderEntireTree(this.state);
+	// getter for this._state
+	getState() {
+		return this._state;
 	},
 
-	// вызывается в MyPost при изменении value элемента textarea для отправки в state и последующего rerender
+	// вызывается в Profile для добавления поста, затем вызывает rerender для переотрисовки UI
+	addMyPost() {
+		if (this._state.profilePage.newPostText === "") return;
+		const newPost = {
+			id: 10,
+			post: this._state.profilePage.newPostText,
+			likes: 0,
+		};
+		this._state.profilePage.posts.push(newPost);
+		this._state.profilePage.newPostText = "";
+		this._callSubscriber(this._state);
+	},
+
+	// вызывается в MyPost при изменении value элемента textarea для отправки в _state и последующего rerender
 	updateNewPostText(text) {
-		this.state.profilePage.newPostText = text;
-		rerenderEntireTree(this.state);
+		this._state.profilePage.newPostText = text;
+		this._callSubscriber(this._state);
 	},
 
 	// вызывается в Dialogs для добавления мессаги, затем вызывает rerender для переотрисовки UI
 	addMyMessage() {
-		if (this.state.dialogsPage.newMessageText === "") return;
+		if (this._state.dialogsPage.newMessageText === "") return;
 		const newMessage = {
 			id: 10,
-			message: this.state.dialogsPage.newMessageText,
+			message: this._state.dialogsPage.newMessageText,
 		};
-		this.state.dialogsPage.messages.push(newMessage);
-		this.state.dialogsPage.newMessageText = "";
-		rerenderEntireTree(this.state);
+		this._state.dialogsPage.messages.push(newMessage);
+		this._state.dialogsPage.newMessageText = "";
+		this._callSubscriber(this._state);
 	},
 
-	// вызывается в MyMessage при изменении value элемента textarea для отправки в state и последующего rerender
+	// вызывается в MyMessage при изменении value элемента textarea для отправки в _state и последующего rerender
 	updateNewMessageText(text) {
-		this.state.dialogsPage.newMessageText = text;
-		rerenderEntireTree(this.state);
+		this._state.dialogsPage.newMessageText = text;
+		this._callSubscriber(this._state);
 	},
 
 	// метод для экспорта и вызова в index.js для обратного "пересылания" ререндера в state.js
 	subscribe(observer) {
-		rerenderEntireTree = observer;
+		this._callSubscriber = observer;
 	},
-};
 
-// функция с заглушкой, в которую присвоится ререндер из index.js при необходимости отререндерить из state.js
-let rerenderEntireTree = () => {
-	console.log("plug");
+	// функция с заглушкой, в которую присвоится ререндер из index.js при необходимости отререндерить из state.js
+	_callSubscriber() {
+		console.log("plug");
+	},
 };
 
 export default store;
