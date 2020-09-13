@@ -7,12 +7,11 @@ import MyMessage from "./MyMessage/MyMessage";
 // Dialogs вызывается из App.js (с пропсами).
 // Dialogs вызывает через map следующие компоненты (с пропсами): Person, Message
 const Dialogs = (props) => {
-	console.log(props);
-	const personsElements = props.state.persons.map((person) => (
+	const personsElements = props.dialogsPage.persons.map((person) => (
 		<Person name={person.name} id={person.id} avatar={person.avatar} />
 	));
 
-	const messagesElements = props.state.messages.map((message) => {
+	const messagesElements = props.dialogsPage.messages.map((message) => {
 		let place = "left";
 		if (message.id % 2 === 0) {
 			place = "right";
@@ -24,7 +23,11 @@ const Dialogs = (props) => {
 		<div className={styles.wrapper}>
 			<div className={styles.persons}>{personsElements}</div>
 			<div className={styles.chat}>{messagesElements}</div>
-			<MyMessage addMyMessage={props.addMyMessage} />
+			<MyMessage
+				addMyMessage={props.addMyMessage}
+				updateNewMessageText={props.updateNewMessageText}
+				newMessageText={props.dialogsPage.newMessageText}
+			/>
 		</div>
 	);
 };

@@ -8,6 +8,7 @@ const state = {
 			{ id: 1, post: "Hi, how r u?", likes: 15 },
 			{ id: 2, post: "it is my 1st post", likes: 20 },
 		],
+		newPostText: "",
 	},
 	dialogsPage: {
 		persons: [
@@ -49,20 +50,37 @@ const state = {
 			{ id: 4, message: "Yo" },
 			{ id: 5, message: "Yo" },
 		],
+		newMessageText: "",
 	},
 };
 
 // вызывается в Profile для добавления поста, затем вызывает rerender для переотрисовки UI
-export const addMyPost = (post) => {
-	const newPost = { id: 10, post: post, likes: 0 };
+export const addMyPost = () => {
+	if (state.profilePage.newPostText === "") return;
+	const newPost = { id: 10, post: state.profilePage.newPostText, likes: 0 };
 	state.profilePage.posts.push(newPost);
+	state.profilePage.newPostText = "";
+	rerenderEntireTree(state);
+};
+
+// вызывается в MyPost при изменении value элемента textarea для отправки в state и последующего rerender
+export const updateNewPostText = (text) => {
+	state.profilePage.newPostText = text;
 	rerenderEntireTree(state);
 };
 
 // вызывается в Dialogs для добавления мессаги, затем вызывает rerender для переотрисовки UI
-export const addMyMessage = (message) => {
-	const newMessage = { id: 10, message: message };
+export const addMyMessage = () => {
+	if (state.dialogsPage.newMessageText === "") return;
+	const newMessage = { id: 10, message: state.dialogsPage.newMessageText };
 	state.dialogsPage.messages.push(newMessage);
+	state.dialogsPage.newMessageText = "";
+	rerenderEntireTree(state);
+};
+
+// вызывается в MyMessage при изменении value элемента textarea для отправки в state и последующего rerender
+export const updateNewMessageText = (text) => {
+	state.dialogsPage.newMessageText = text;
 	rerenderEntireTree(state);
 };
 
