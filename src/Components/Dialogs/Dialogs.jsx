@@ -7,27 +7,29 @@ import MyMessage from "./MyMessage/MyMessage";
 // Dialogs вызывается из App.js (с пропсами).
 // Dialogs вызывает через map следующие компоненты (с пропсами): Person, Message
 const Dialogs = (props) => {
-	const personsElements = props.dialogsPage.persons.map((person) => (
-		<Person name={person.name} id={person.id} avatar={person.avatar} />
-	));
+	const personsElements = props.store.state.dialogsPage.persons.map(
+		(person) => (
+			<Person name={person.name} id={person.id} avatar={person.avatar} />
+		)
+	);
 
-	const messagesElements = props.dialogsPage.messages.map((message) => {
-		let place = "left";
-		if (message.id % 2 === 0) {
-			place = "right";
+	const messagesElements = props.store.state.dialogsPage.messages.map(
+		(message) => {
+			let place = "left";
+			if (message.id % 2 === 0) {
+				place = "right";
+			}
+			return (
+				<Message id={message.id} message={message.message} place={place} />
+			);
 		}
-		return <Message id={message.id} message={message.message} place={place} />;
-	});
+	);
 
 	return (
 		<div className={styles.wrapper}>
 			<div className={styles.persons}>{personsElements}</div>
 			<div className={styles.chat}>{messagesElements}</div>
-			<MyMessage
-				addMyMessage={props.addMyMessage}
-				updateNewMessageText={props.updateNewMessageText}
-				newMessageText={props.dialogsPage.newMessageText}
-			/>
+			<MyMessage store={props.store} />
 		</div>
 	);
 };

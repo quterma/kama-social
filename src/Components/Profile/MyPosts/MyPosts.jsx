@@ -3,7 +3,7 @@ import styles from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
 const MyPosts = (props) => {
-	const postsElements = props.profilePage.posts.map((post) => (
+	const postsElements = props.store.state.profilePage.posts.map((post) => (
 		<Post message={post.post} likes={post.likes} />
 	));
 
@@ -11,12 +11,12 @@ const MyPosts = (props) => {
 
 	// get value from textarea and alert it
 	const addMyPost = () => {
-		props.addMyPost();
+		props.store.addMyPost();
 	};
 
 	const onPostChange = () => {
 		const text = newPostElement.current.value;
-		props.updateNewPostText(text);
+		props.store.updateNewPostText(text);
 	};
 
 	return (
@@ -27,7 +27,7 @@ const MyPosts = (props) => {
 					ref={newPostElement}
 					className={styles.textarea}
 					onChange={onPostChange}
-					value={props.profilePage.newPostText}
+					value={props.store.state.profilePage.newPostText}
 				/>
 				<button className={styles.button} onClick={addMyPost}>
 					Add post

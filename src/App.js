@@ -16,15 +16,16 @@ const App = (props) => {
 	return (
 		<div className={styles.wrapper}>
 			<Header />
-			<Navbar persons={props.state.dialogsPage.persons} />
+			<Navbar persons={props.store.state.dialogsPage.persons} />
 			<div className={styles.gridContent}>
 				<Route
 					path="/profile"
 					render={() => (
 						<Profile
-							profilePage={props.state.profilePage}
-							addMyPost={props.addMyPost}
-							updateNewPostText={props.updateNewPostText}
+							store={props.store}
+							// profilePage={props.state.profilePage}
+							// addMyPost={props.addMyPost}
+							// updateNewPostText={props.updateNewPostText}
 						/>
 					)}
 				/>
@@ -32,9 +33,10 @@ const App = (props) => {
 					path="/dialogs"
 					render={() => (
 						<Dialogs
-							dialogsPage={props.state.dialogsPage}
-							addMyMessage={props.addMyMessage}
-							updateNewMessageText={props.updateNewMessageText}
+							store={props.store}
+							// dialogsPage={props.state.dialogsPage}
+							// addMyMessage={props.addMyMessage}
+							// updateNewMessageText={props.updateNewMessageText}
 						/>
 					)}
 				/>

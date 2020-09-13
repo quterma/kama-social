@@ -1,6 +1,6 @@
-// переменная с заглушкой, в которую присвоится ререндер из index.js при необходимости отререндерить из state.js
+// функция с заглушкой, в которую присвоится ререндер из index.js при необходимости отререндерить из state.js
 let rerenderEntireTree = () => {
-	console.log("htis one will be changed on rerender from index.js");
+	console.log("plug");
 };
 
 const state = {
