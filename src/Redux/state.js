@@ -1,4 +1,7 @@
-import { rerenderEntireTree } from "../render"; // импортирует ререндер для вызова в add post и addmessage
+// переменная с заглушкой, в которую присвоится ререндер из index.js при необходимости отререндерить из state.js
+let rerenderEntireTree = () => {
+	console.log("htis one will be changed on rerender from index.js");
+};
 
 const state = {
 	// глобальный стейт
@@ -82,6 +85,12 @@ export const addMyMessage = () => {
 export const updateNewMessageText = (text) => {
 	state.dialogsPage.newMessageText = text;
 	rerenderEntireTree(state);
+};
+
+// функция для экспорта и вызова в index.js для обратного "пересылания" ререндера в state.js
+// это PATTERN
+export const subscribe = (observer) => {
+	rerenderEntireTree = observer;
 };
 
 export default state;
