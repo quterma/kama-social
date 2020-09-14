@@ -52,46 +52,14 @@ const store = {
 		},
 	},
 
+	// функция с заглушкой, в которую присвоится ререндер из index.js при необходимости отререндерить из state.js
+	_callSubscriber() {
+		console.log("plug");
+	},
+
 	// getter for this._state
 	getState() {
 		return this._state;
-	},
-
-	// вызывается в Profile для добавления поста, затем вызывает rerender для переотрисовки UI
-	addMyPost() {
-		if (this._state.profilePage.newPostText === "") return;
-		const newPost = {
-			id: 10,
-			post: this._state.profilePage.newPostText,
-			likes: 0,
-		};
-		this._state.profilePage.posts.push(newPost);
-		this._state.profilePage.newPostText = "";
-		this._callSubscriber(this._state);
-	},
-
-	// вызывается в MyPost при изменении value элемента textarea для отправки в _state и последующего rerender
-	updateNewPostText(text) {
-		this._state.profilePage.newPostText = text;
-		this._callSubscriber(this._state);
-	},
-
-	// вызывается в Dialogs для добавления мессаги, затем вызывает rerender для переотрисовки UI
-	addMyMessage() {
-		if (this._state.dialogsPage.newMessageText === "") return;
-		const newMessage = {
-			id: 10,
-			message: this._state.dialogsPage.newMessageText,
-		};
-		this._state.dialogsPage.messages.push(newMessage);
-		this._state.dialogsPage.newMessageText = "";
-		this._callSubscriber(this._state);
-	},
-
-	// вызывается в MyMessage при изменении value элемента textarea для отправки в _state и последующего rerender
-	updateNewMessageText(text) {
-		this._state.dialogsPage.newMessageText = text;
-		this._callSubscriber(this._state);
 	},
 
 	// метод для экспорта и вызова в index.js для обратного "пересылания" ререндера в state.js
@@ -99,9 +67,40 @@ const store = {
 		this._callSubscriber = observer;
 	},
 
-	// функция с заглушкой, в которую присвоится ререндер из index.js при необходимости отререндерить из state.js
-	_callSubscriber() {
-		console.log("plug");
+	dispatch(action) {
+		// вызывается в Profile для добавления поста, затем вызывает rerender для переотрисовки UI
+		if (action.type === "ADD-MY-POST") {
+			if (this._state.profilePage.newPostText === "") return;
+			const newPost = {
+				id: 10,
+				post: this._state.profilePage.newPostText,
+				likes: 0,
+			};
+			this._state.profilePage.posts.push(newPost);
+			this._state.profilePage.newPostText = "";
+			this._callSubscriber(this._state);
+
+			// вызывается в MyPost при изменении value элемента textarea для отправки в _state и последующего rerender
+		} else if (action.type === "UPDATE-NEW-POST-TEXT") {
+			this._state.profilePage.newPostText = action.newText;
+			this._callSubscriber(this._state);
+
+			// вызывается в Dialogs для добавления мессаги, затем вызывает rerender для переотрисовки UI
+		} else if (action.type === "ADD-MY-MESSAGE") {
+			if (this._state.dialogsPage.newMessageText === "") return;
+			const newMessage = {
+				id: 10,
+				message: this._state.dialogsPage.newMessageText,
+			};
+			this._state.dialogsPage.messages.push(newMessage);
+			this._state.dialogsPage.newMessageText = "";
+			this._callSubscriber(this._state);
+
+			// вызывается в MyMessage при изменении value элемента textarea для отправки в _state и последующего rerender
+		} else if (action.type === "UPDATE-NEW-MESSAGE-TEXT") {
+			this._state.dialogsPage.newMessageText = action.newText;
+			this._callSubscriber(this._state);
+		}
 	},
 };
 

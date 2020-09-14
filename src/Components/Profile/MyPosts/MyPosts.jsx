@@ -11,12 +11,12 @@ const MyPosts = (props) => {
 
 	// get value from textarea and alert it
 	const addMyPost = () => {
-		props.addMyPost();
+		props.dispatch({ type: "ADD-MY-POST" });
 	};
 
 	const onPostChange = () => {
 		const text = newPostElement.current.value;
-		props.updateNewPostText(text);
+		props.dispatch({ type: "UPDATE-NEW-POST-TEXT", newText: text });
 	};
 
 	return (

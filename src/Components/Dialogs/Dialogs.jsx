@@ -23,11 +23,7 @@ const Dialogs = (props) => {
 		<div className={styles.wrapper}>
 			<div className={styles.persons}>{personsElements}</div>
 			<div className={styles.chat}>{messagesElements}</div>
-			<MyMessage
-				dialogsPage={props.dialogsPage}
-				addMyMessage={props.addMyMessage}
-				updateNewMessageText={props.updateNewMessageText}
-			/>
+			<MyMessage dialogsPage={props.dialogsPage} dispatch={props.dispatch} />
 		</div>
 	);
 };

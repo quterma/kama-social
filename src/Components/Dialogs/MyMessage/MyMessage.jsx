@@ -6,12 +6,12 @@ const MyMessage = (props) => {
 
 	const addMyMessage = () => {
 		debugger;
-		props.addMyMessage();
+		props.dispatch({ type: "ADD-MY-MESSAGE" });
 	};
 
 	const onMessageChange = () => {
 		const text = myMessageElement.current.value;
-		props.updateNewMessageText(text);
+		props.dispatch({ type: "UPDATE-NEW-MESSAGE-TEXT", newText: text });
 	};
 
 	return (

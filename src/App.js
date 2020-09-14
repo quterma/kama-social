@@ -16,17 +16,14 @@ const App = (props) => {
 	return (
 		<div className={styles.wrapper}>
 			<Header />
-			<Navbar persons={props.store.getState().dialogsPage.persons} />
+			<Navbar persons={props.state.dialogsPage.persons} />
 			<div className={styles.gridContent}>
 				<Route
 					path="/profile"
 					render={() => (
 						<Profile
-							profilePage={props.store.getState().profilePage}
-							addMyPost={props.store.addMyPost.bind(props.store)}
-							updateNewPostText={props.store.updateNewPostText.bind(
-								props.store
-							)}
+							profilePage={props.state.profilePage}
+							dispatch={props.dispatch}
 						/>
 					)}
 				/>
@@ -34,11 +31,8 @@ const App = (props) => {
 					path="/dialogs"
 					render={() => (
 						<Dialogs
-							dialogsPage={props.store.getState().dialogsPage}
-							addMyMessage={props.store.addMyMessage.bind(props.store)}
-							updateNewMessageText={props.store.updateNewMessageText.bind(
-								props.store
-							)}
+							dialogsPage={props.state.dialogsPage}
+							dispatch={props.dispatch}
 						/>
 					)}
 				/>
