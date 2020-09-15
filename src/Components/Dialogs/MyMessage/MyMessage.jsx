@@ -7,11 +7,10 @@ import {
 
 const MyMessage = (props) => {
 	// create a reference (for textarea)
-	const myMessageElement = React.createRef();
 
 	// textarea onchange listener callback f() -> calls dispatch f() - push chars to BLL
-	const onMessageChange = () => {
-		const text = myMessageElement.current.value;
+	const onMessageChange = (event) => {
+		const text = event.target.value;
 		props.dispatch(updateNewMessageTextActionCreator(text));
 	};
 
@@ -25,9 +24,6 @@ const MyMessage = (props) => {
 		<div className={styles.wrapper}>
 			<textarea
 				className={styles.textarea}
-				name=""
-				id=""
-				ref={myMessageElement}
 				onChange={onMessageChange}
 				value={props.dialogsPage.newMessageText}
 			></textarea>

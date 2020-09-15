@@ -12,12 +12,9 @@ const MyPosts = (props) => {
 		<Post message={post.post} likes={post.likes} />
 	));
 
-	// create a reference (for textarea)
-	const newPostElement = React.createRef();
-
 	// textarea onchange listener callback f() -> calls dispatch f() - push chars to BLL
-	const onPostChange = () => {
-		const text = newPostElement.current.value;
+	const onPostChange = (event) => {
+		const text = event.target.value;
 		props.dispatch(updateNewPostTextActionCreator(text));
 	};
 
@@ -31,7 +28,6 @@ const MyPosts = (props) => {
 			<div>My post</div>
 			<div className={styles.newPost}>
 				<textarea
-					ref={newPostElement}
 					className={styles.textarea}
 					onChange={onPostChange}
 					value={props.profilePage.newPostText}
