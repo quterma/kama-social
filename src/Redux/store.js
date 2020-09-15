@@ -1,3 +1,10 @@
+// constants for action types
+const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
+const ADD_MY_POST = "ADD-MY-POST";
+const UPDATE_NEW_MESSAGE_TEXT = "UPDATE-NEW-MESSAGE-TEXT";
+const ADD_MY_MESSAGE = "ADD-MY-MESSAGE";
+
+// selfmade redux object (temporary)
 const store = {
 	_state: {
 		profilePage: {
@@ -69,7 +76,7 @@ const store = {
 
 	dispatch(action) {
 		// вызывается в Profile для добавления поста, затем вызывает rerender для переотрисовки UI
-		if (action.type === "ADD-MY-POST") {
+		if (action.type === ADD_MY_POST) {
 			if (this._state.profilePage.newPostText === "") return;
 			const newPost = {
 				id: 10,
@@ -81,12 +88,12 @@ const store = {
 			this._callSubscriber(this._state);
 
 			// вызывается в MyPost при изменении value элемента textarea для отправки в _state и последующего rerender
-		} else if (action.type === "UPDATE-NEW-POST-TEXT") {
+		} else if (action.type === UPDATE_NEW_POST_TEXT) {
 			this._state.profilePage.newPostText = action.newText;
 			this._callSubscriber(this._state);
 
 			// вызывается в Dialogs для добавления мессаги, затем вызывает rerender для переотрисовки UI
-		} else if (action.type === "ADD-MY-MESSAGE") {
+		} else if (action.type === ADD_MY_MESSAGE) {
 			if (this._state.dialogsPage.newMessageText === "") return;
 			const newMessage = {
 				id: 10,
@@ -97,11 +104,27 @@ const store = {
 			this._callSubscriber(this._state);
 
 			// вызывается в MyMessage при изменении value элемента textarea для отправки в _state и последующего rerender
-		} else if (action.type === "UPDATE-NEW-MESSAGE-TEXT") {
+		} else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
 			this._state.dialogsPage.newMessageText = action.newText;
 			this._callSubscriber(this._state);
 		}
 	},
 };
+
+export const updateNewPostTextActionCreator = (text) => ({
+	type: UPDATE_NEW_POST_TEXT,
+	newText: text,
+});
+
+export const addMyPostActionCreator = () => ({
+	type: ADD_MY_POST,
+});
+
+export const updateNewMessageTextActionCreator = (text) => ({
+	type: UPDATE_NEW_MESSAGE_TEXT,
+	newText: text,
+});
+
+export const addMyMessageActionCreator = () => ({ type: ADD_MY_MESSAGE });
 
 export default store;

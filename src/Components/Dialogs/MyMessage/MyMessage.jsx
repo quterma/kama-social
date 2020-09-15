@@ -1,17 +1,24 @@
 import React from "react";
 import styles from "./MyMessage.module.css";
+import {
+	addMyMessageActionCreator,
+	updateNewMessageTextActionCreator,
+} from "./../../../Redux/store";
 
 const MyMessage = (props) => {
-	const myMessageElement = React.createRef(); // reference to textarea
+	// create a reference (for textarea)
+	const myMessageElement = React.createRef();
 
-	const addMyMessage = () => {
-		debugger;
-		props.dispatch({ type: "ADD-MY-MESSAGE" });
-	};
-
+	// textarea onchange listener callback f() -> calls dispatch f() - push chars to BLL
 	const onMessageChange = () => {
 		const text = myMessageElement.current.value;
-		props.dispatch({ type: "UPDATE-NEW-MESSAGE-TEXT", newText: text });
+		props.dispatch(updateNewMessageTextActionCreator(text));
+	};
+
+	// button onclick listener callback f() -> calls dispatch f()
+	const addMyMessage = () => {
+		debugger;
+		props.dispatch(addMyMessageActionCreator());
 	};
 
 	return (

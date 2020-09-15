@@ -1,22 +1,29 @@
 import React from "react";
 import styles from "./MyPosts.module.css";
 import Post from "./Post/Post";
+import {
+	addMyPostActionCreator,
+	updateNewPostTextActionCreator,
+} from "./../../../Redux/store";
 
 const MyPosts = (props) => {
+	// mapping posts array (from BLL) to array of Post components
 	const postsElements = props.profilePage.posts.map((post) => (
 		<Post message={post.post} likes={post.likes} />
 	));
 
-	const newPostElement = React.createRef(); // reference to textarea
+	// create a reference (for textarea)
+	const newPostElement = React.createRef();
 
-	// get value from textarea and alert it
-	const addMyPost = () => {
-		props.dispatch({ type: "ADD-MY-POST" });
-	};
-
+	// textarea onchange listener callback f() -> calls dispatch f() - push chars to BLL
 	const onPostChange = () => {
 		const text = newPostElement.current.value;
-		props.dispatch({ type: "UPDATE-NEW-POST-TEXT", newText: text });
+		props.dispatch(updateNewPostTextActionCreator(text));
+	};
+
+	// button onclick listener callback f() -> calls dispatch f()
+	const addMyPost = () => {
+		props.dispatch(addMyPostActionCreator());
 	};
 
 	return (
