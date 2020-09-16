@@ -2,8 +2,17 @@
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
 const ADD_MY_POST = "ADD-MY-POST";
 
+const initialState = {
+	posts: [
+		// мои (?) мессаги в Профиле
+		{ id: 1, post: "Hi, how r u?", likes: 15 },
+		{ id: 2, post: "it is my 1st post", likes: 20 },
+	],
+	newPostText: "",
+};
+
 // get state and action, change state and return new state
-const profileReducer = (state, action) => {
+const profileReducer = (state = initialState, action) => {
 	switch (action.type) {
 		// вызывается в MyPost при изменении value элемента textarea для отправки в _state и последующего rerender
 		case UPDATE_NEW_POST_TEXT:
