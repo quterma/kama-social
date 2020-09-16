@@ -4,7 +4,7 @@ import Post from "./Post/Post";
 import {
 	addMyPostActionCreator,
 	updateNewPostTextActionCreator,
-} from "./../../../Redux/store";
+} from "./../../../Redux/profileReducer";
 
 const MyPosts = (props) => {
 	// mapping posts array (from BLL) to array of Post components

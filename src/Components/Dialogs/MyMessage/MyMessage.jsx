@@ -3,7 +3,7 @@ import styles from "./MyMessage.module.css";
 import {
 	addMyMessageActionCreator,
 	updateNewMessageTextActionCreator,
-} from "./../../../Redux/store";
+} from "./../../../Redux/dialogsReducer";
 
 const MyMessage = (props) => {
 	// create a reference (for textarea)
