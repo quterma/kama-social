@@ -2,6 +2,7 @@
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
 const ADD_MY_POST = "ADD-MY-POST";
 
+// initial state for first load
 const initialState = {
 	posts: [
 		// мои (?) мессаги в Профиле
@@ -37,6 +38,7 @@ const profileReducer = (state = initialState, action) => {
 	}
 };
 
+// action creators - to avoid string typing
 export const updateNewPostTextActionCreator = (text) => ({
 	type: UPDATE_NEW_POST_TEXT,
 	newText: text,

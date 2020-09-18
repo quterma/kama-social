@@ -7,11 +7,11 @@ import { BrowserRouter } from "react-router-dom";
 import store from "./Redux/redux-store";
 
 // рендерит App с пропсами (объект state из ./Redux/state.js)
-const rerenderEntireTree = (state) => {
+const rerenderEntireTree = () => {
 	ReactDOM.render(
 		<React.StrictMode>
 			<BrowserRouter>
-				<App state={state} dispatch={store.dispatch.bind(store)} />
+				<App store={store} />
 			</BrowserRouter>
 		</React.StrictMode>,
 		document.getElementById("root")
@@ -19,12 +19,11 @@ const rerenderEntireTree = (state) => {
 };
 
 // импортирует вызывает rerender с передачей стейта для последующей передачи стейта в пропсы
-rerenderEntireTree(store.getState());
+rerenderEntireTree();
 
 // вызывает импортированную из стейта функцию для передачи в стейт ререндера
 store.subscribe(() => {
-	const state = store.getState();
-	rerenderEntireTree(state);
+	rerenderEntireTree();
 });
 
 // If you want your app to work offline and load faster, you can change

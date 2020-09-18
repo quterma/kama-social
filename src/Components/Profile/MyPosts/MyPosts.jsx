@@ -1,27 +1,21 @@
 import React from "react";
 import styles from "./MyPosts.module.css";
 import Post from "./Post/Post";
-import {
-	addMyPostActionCreator,
-	updateNewPostTextActionCreator,
-} from "./../../../Redux/profileReducer";
 
-const MyPosts = (props) => {
+const MyPosts = props => {
 	// mapping posts array (from BLL) to array of Post components
-	const postsElements = props.profilePage.posts.map((post) => (
-		<Post message={post.post} likes={post.likes} />
+	const postsElements = props.profilePage.posts.map(post => (
+		<Post post={post.post} likes={post.likes} />
 	));
 
 	// textarea onchange listener callback f() -> calls dispatch f() - push chars to BLL
-	const onPostChange = (event) => {
+	const onPostChange = event => {
 		const text = event.target.value;
-		props.dispatch(updateNewPostTextActionCreator(text));
+		props.updateNewPostText(text);
 	};
 
 	// button onclick listener callback f() -> calls dispatch f()
-	const addMyPost = () => {
-		props.dispatch(addMyPostActionCreator());
-	};
+	const onAddMyPost = () => props.addMyPost();
 
 	return (
 		<div className={styles.wrapper}>
@@ -32,7 +26,7 @@ const MyPosts = (props) => {
 					onChange={onPostChange}
 					value={props.profilePage.newPostText}
 				/>
-				<button className={styles.button} onClick={addMyPost}>
+				<button className={styles.button} onClick={onAddMyPost}>
 					Add post
 				</button>
 			</div>

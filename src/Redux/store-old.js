@@ -1,3 +1,5 @@
+// this is OLD store (before redux) - keep it here for memory
+
 import profileReducer from "./profileReducer";
 import dialogsReducer from "./dialogsReducer";
 

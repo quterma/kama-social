@@ -1,33 +1,24 @@
 import React from "react";
 import styles from "./MyMessage.module.css";
-import {
-	addMyMessageActionCreator,
-	updateNewMessageTextActionCreator,
-} from "./../../../Redux/dialogsReducer";
 
-const MyMessage = (props) => {
-	// create a reference (for textarea)
-
+const MyMessage = props => {
 	// textarea onchange listener callback f() -> calls dispatch f() - push chars to BLL
-	const onMessageChange = (event) => {
+	const onMessageChange = event => {
 		const text = event.target.value;
-		props.dispatch(updateNewMessageTextActionCreator(text));
+		props.updateNewMessageText(text);
 	};
 
 	// button onclick listener callback f() -> calls dispatch f()
-	const addMyMessage = () => {
-		debugger;
-		props.dispatch(addMyMessageActionCreator());
-	};
+	const onMyMessageClick = () => props.addMyMessage();
 
 	return (
 		<div className={styles.wrapper}>
 			<textarea
 				className={styles.textarea}
 				onChange={onMessageChange}
-				value={props.dialogsPage.newMessageText}
+				value={props.newMessageText}
 			></textarea>
-			<button className={styles.button} onClick={addMyMessage}>
+			<button className={styles.button} onClick={onMyMessageClick}>
 				Add message
 			</button>
 		</div>

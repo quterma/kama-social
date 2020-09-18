@@ -12,30 +12,14 @@ import { Route } from "react-router-dom";
 
 // App рендерится из index.js (с пропсами).
 // App вызывает через BrowserRouter следующие компоненты (с пропсами): Header, Navbar, Profile/Dialogs/News/Music/Settings
-const App = (props) => {
+const App = props => {
 	return (
 		<div className={styles.wrapper}>
 			<Header />
-			<Navbar persons={props.state.dialogsPage.persons} />
+			<Navbar persons={props.store.getState().dialogsPage.persons} />
 			<div className={styles.gridContent}>
-				<Route
-					path="/profile"
-					render={() => (
-						<Profile
-							profilePage={props.state.profilePage}
-							dispatch={props.dispatch}
-						/>
-					)}
-				/>
-				<Route
-					path="/dialogs"
-					render={() => (
-						<Dialogs
-							dialogsPage={props.state.dialogsPage}
-							dispatch={props.dispatch}
-						/>
-					)}
-				/>
+				<Route path="/profile" render={() => <Profile store={props.store} />} />
+				<Route path="/dialogs" render={() => <Dialogs store={props.store} />} />
 				<Route path="/news" component={News} />
 				<Route path="/music" component={Music} />
 				<Route path="/settings" component={Settings} />

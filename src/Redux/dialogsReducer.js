@@ -2,6 +2,7 @@
 const UPDATE_NEW_MESSAGE_TEXT = "UPDATE-NEW-MESSAGE-TEXT";
 const ADD_MY_MESSAGE = "ADD-MY-MESSAGE";
 
+// initial state for first load
 const initialState = {
 	persons: [
 		{
@@ -70,6 +71,7 @@ const dialogsReducer = (state = initialState, action) => {
 	}
 };
 
+// action creators - to avoid string typing
 export const updateNewMessageTextActionCreator = (text) => ({
 	type: UPDATE_NEW_MESSAGE_TEXT,
 	newText: text,
