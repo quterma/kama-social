@@ -7,7 +7,12 @@ const Friends = props => {
 	const chosenFriends = props.persons.map(person => {
 		return (
 			person.isFriend && (
-				<Friend name={person.name} id={person.id} avatar={person.avatar} />
+				<Friend
+					name={person.name}
+					key={person.id}
+					id={person.id}
+					avatar={person.avatar}
+				/>
 			)
 		);
 	});

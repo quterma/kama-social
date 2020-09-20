@@ -12,30 +12,28 @@ const initialState = {
 	newPostText: "",
 };
 
-// get state and action, make COPE of state!, change it and return new state (if no changes - returns old one)
+// get state and action, create COPY of STATE!, change it and return new state (if no changes - returns old one)
 const profileReducer = (state = initialState, action) => {
 	switch (action.type) {
 		// вызывается в MyPost при изменении value элемента textarea для изменения стейта с последующей переотрисовкой UI
-		case UPDATE_NEW_POST_TEXT: {
-			const stateCopy = { ...state };
-			stateCopy.newPostText = action.newText;
-			return stateCopy;
-		}
+		case UPDATE_NEW_POST_TEXT:
+			return { ...state, newPostText: action.newText };
 
 		// вызывается в Profile для добавления поста мессаги в стейт с последующей переотрисовкой UI
-		case ADD_MY_POST: {
+		case ADD_MY_POST:
 			if (state.newPostText === "") return state;
+
 			const newPost = {
 				id: 10,
 				post: state.newPostText,
 				likes: 0,
 			};
-			const stateCopy = { ...state };
-			stateCopy.posts = [...state.posts];
-			stateCopy.posts.push(newPost);
-			stateCopy.newPostText = "";
-			return stateCopy;
-		}
+			return {
+				...state,
+				posts: [...state.posts, newPost],
+				newPostText: "",
+			};
+
 		// if action not matched - return old state
 		default:
 			return state;

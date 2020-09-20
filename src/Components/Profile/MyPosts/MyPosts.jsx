@@ -6,7 +6,7 @@ import Post from "./Post/Post";
 const MyPosts = props => {
 	// мапит из пропс.posts объект из компонент Post
 	const postsElements = props.posts.map(post => (
-		<Post post={post.post} likes={post.likes} />
+		<Post key={post.id} post={post.post} likes={post.likes} />
 	));
 
 	// textarea onchange listener callback f() -> вызывает пропснутую диспатч функцию

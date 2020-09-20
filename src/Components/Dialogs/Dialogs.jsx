@@ -8,7 +8,12 @@ import MyMessageContainer from "./MyMessage/MyMessageContainer";
 const Dialogs = props => {
 	// мапит из пропс.persons объект из компонент Person
 	const personsElements = props.persons.map(person => (
-		<Person name={person.name} id={person.id} avatar={person.avatar} />
+		<Person
+			name={person.name}
+			key={person.id}
+			id={person.id}
+			avatar={person.avatar}
+		/>
 	));
 
 	// мапит из пропс.messages объект из компонент Message
@@ -17,7 +22,14 @@ const Dialogs = props => {
 		if (message.id % 2 === 0) {
 			place = "right";
 		}
-		return <Message id={message.id} message={message.message} place={place} />;
+		return (
+			<Message
+				key={message.id}
+				id={message.id}
+				message={message.message}
+				place={place}
+			/>
+		);
 	});
 
 	return (
