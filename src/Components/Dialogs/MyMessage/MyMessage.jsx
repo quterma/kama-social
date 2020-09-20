@@ -1,14 +1,15 @@
 import React from "react";
 import styles from "./MyMessage.module.css";
 
+// Дем компонента
 const MyMessage = props => {
-	// textarea onchange listener callback f() -> calls dispatch f() - push chars to BLL
+	// textarea onchange listener callback f() -> вызывает пропснутую диспатч функцию
 	const onMessageChange = event => {
 		const text = event.target.value;
 		props.updateNewMessageText(text);
 	};
 
-	// button onclick listener callback f() -> calls dispatch f()
+	// button onclick listener callback f() -> вызывает пропснутую диспатч функцию
 	const onMyMessageClick = () => props.addMyMessage();
 
 	return (

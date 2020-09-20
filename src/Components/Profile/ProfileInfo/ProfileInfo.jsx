@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./ProfileInfo.module.css";
 
+//Дем компонента
 const ProfileInfo = () => {
 	return (
 		<div>

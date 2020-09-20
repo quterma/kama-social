@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Header.module.css";
 
+// Дем компонента
 const Header = () => {
 	return (
 		<header className={styles.wrapper}>

@@ -7,27 +7,17 @@ import { BrowserRouter } from "react-router-dom";
 import store from "./Redux/redux-store";
 import { Provider } from "react-redux";
 
-// рендерит App с пропсами (объект state из ./Redux/state.js)
-const rerenderEntireTree = () => {
-	ReactDOM.render(
-		<React.StrictMode>
-			<BrowserRouter>
-				<Provider store={store}>
-					<App />
-				</Provider>
-			</BrowserRouter>
-		</React.StrictMode>,
-		document.getElementById("root")
-	);
-};
-
-// импортирует вызывает rerender с передачей стейта для последующей передачи стейта в пропсы
-rerenderEntireTree();
-
-// вызывает импортированную из стейта функцию для передачи в стейт ререндера
-store.subscribe(() => {
-	rerenderEntireTree();
-});
+// рендерит App через Provider (React-Redux), который создает контекст с объектом store (из redux-store)
+ReactDOM.render(
+	<React.StrictMode>
+		<BrowserRouter>
+			<Provider store={store}>
+				<App />
+			</Provider>
+		</BrowserRouter>
+	</React.StrictMode>,
+	document.getElementById("root")
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

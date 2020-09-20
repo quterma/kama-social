@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Friends.module.css";
 import Friend from "./Friend/Friend";
 
+// Дем компонента, мапит из пропс.persons объект из компонент Friend и рендерит
 const Friends = props => {
 	const chosenFriends = props.persons.map(person => {
 		return (

@@ -46,25 +46,28 @@ const initialState = {
 	newMessageText: "",
 };
 
-// get state and action, change state and return new state
+// get state and action, make COPE of state!, change it and return new state (if no changes - returns old one)
 const dialogsReducer = (state = initialState, action) => {
 	switch (action.type) {
-		// вызывается в MyMessage при изменении value элемента textarea для отправки в _state и последующего rerender
-		case UPDATE_NEW_MESSAGE_TEXT:
-			state.newMessageText = action.newText;
-			return state;
-
-		// вызывается в Dialogs для добавления мессаги, затем вызывает rerender для переотрисовки UI
-		case ADD_MY_MESSAGE:
-			// if (state.newMessageText === "") return;
+		// вызывается в MyMessage при изменении value элемента textarea для изменения стейта с последующей переотрисовкой UI
+		case UPDATE_NEW_MESSAGE_TEXT: {
+			const stateCopy = { ...state };
+			stateCopy.newMessageText = action.newText;
+			return stateCopy;
+		}
+		// вызывается в Dialogs для добавления мессаги в стейт с последующей переотрисовкой UI
+		case ADD_MY_MESSAGE: {
+			if (state.newMessageText === "") return state;
 			const newMessage = {
 				id: 10,
 				message: state.newMessageText,
 			};
-			state.messages.push(newMessage);
-			state.newMessageText = "";
-			return state;
-
+			const stateCopy = { ...state };
+			stateCopy.messages = [...state.messages];
+			stateCopy.messages.push(newMessage);
+			stateCopy.newMessageText = "";
+			return stateCopy;
+		}
 		// if action not matched - return old state
 		default:
 			return state;

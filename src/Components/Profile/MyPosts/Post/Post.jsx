@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Post.module.css";
 
+// Дем компонента
 const Post = props => {
 	return (
 		<div className={styles.item}>

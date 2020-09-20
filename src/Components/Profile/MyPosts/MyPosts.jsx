@@ -2,19 +2,20 @@ import React from "react";
 import styles from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
+// Дем компонента
 const MyPosts = props => {
-	// mapping posts array (from BLL) to array of Post components
+	// мапит из пропс.posts объект из компонент Post
 	const postsElements = props.posts.map(post => (
 		<Post post={post.post} likes={post.likes} />
 	));
 
-	// textarea onchange listener callback f() -> calls dispatch f() - push chars to BLL
+	// textarea onchange listener callback f() -> вызывает пропснутую диспатч функцию
 	const onPostChange = event => {
 		const text = event.target.value;
 		props.updateNewPostText(text);
 	};
 
-	// button onclick listener callback f() -> calls dispatch f()
+	// button onclick listener callback f() -> вызывает пропснутую диспатч функцию
 	const onAddMyPost = () => props.addMyPost();
 
 	return (

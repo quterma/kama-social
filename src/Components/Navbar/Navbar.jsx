@@ -3,6 +3,7 @@ import styles from "./Navbar.module.css";
 import { NavLink } from "react-router-dom";
 import FriendsContainer from "./Friends/FriendsContainer";
 
+// компонента (Dem) рендерит навлинки меню (надо загнать в подкомпоненты) и компоненту FriendsContainer (Cont)
 const Navbar = () => {
 	return (
 		<nav className={styles.wrapper}>

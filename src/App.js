@@ -10,8 +10,7 @@ import News from "./Components/News/News";
 import { Route } from "react-router-dom";
 import DialogsContainer from "./Components/Dialogs/DialogsContainer";
 
-// App рендерится из index.js (с пропсами).
-// App вызывает через BrowserRouter следующие компоненты (с пропсами): Header, Navbar, Profile/Dialogs/News/Music/Settings
+// верхняя компонента
 const App = () => {
 	return (
 		<div className={styles.wrapper}>

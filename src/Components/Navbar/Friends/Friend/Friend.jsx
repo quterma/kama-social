@@ -2,7 +2,8 @@ import React from "react";
 import styles from "./Friend.module.css";
 import { NavLink } from "react-router-dom";
 
-const Friend = (props) => {
+// Дем компонента
+const Friend = props => {
 	const path = "/dialogs/" + props.id;
 	return (
 		<div className={styles.item}>
