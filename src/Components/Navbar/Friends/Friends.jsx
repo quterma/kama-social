@@ -2,8 +2,8 @@ import React from "react";
 import styles from "./Friends.module.css";
 import Friend from "./Friend/Friend";
 
-const Friends = (props) => {
-	const chosenFriends = props.persons.map((person) => {
+const Friends = props => {
+	const chosenFriends = props.persons.map(person => {
 		return (
 			person.isFriend && (
 				<Friend name={person.name} id={person.id} avatar={person.avatar} />

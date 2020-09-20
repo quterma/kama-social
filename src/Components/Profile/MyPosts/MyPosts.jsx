@@ -4,7 +4,7 @@ import Post from "./Post/Post";
 
 const MyPosts = props => {
 	// mapping posts array (from BLL) to array of Post components
-	const postsElements = props.profilePage.posts.map(post => (
+	const postsElements = props.posts.map(post => (
 		<Post post={post.post} likes={post.likes} />
 	));
 
@@ -24,7 +24,7 @@ const MyPosts = props => {
 				<textarea
 					className={styles.textarea}
 					onChange={onPostChange}
-					value={props.profilePage.newPostText}
+					value={props.newPostText}
 				/>
 				<button className={styles.button} onClick={onAddMyPost}>
 					Add post

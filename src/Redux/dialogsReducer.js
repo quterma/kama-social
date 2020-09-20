@@ -56,7 +56,7 @@ const dialogsReducer = (state = initialState, action) => {
 
 		// вызывается в Dialogs для добавления мессаги, затем вызывает rerender для переотрисовки UI
 		case ADD_MY_MESSAGE:
-			if (state.newMessageText === "") return;
+			// if (state.newMessageText === "") return;
 			const newMessage = {
 				id: 10,
 				message: state.newMessageText,
@@ -72,7 +72,7 @@ const dialogsReducer = (state = initialState, action) => {
 };
 
 // action creators - to avoid string typing
-export const updateNewMessageTextActionCreator = (text) => ({
+export const updateNewMessageTextActionCreator = text => ({
 	type: UPDATE_NEW_MESSAGE_TEXT,
 	newText: text,
 });

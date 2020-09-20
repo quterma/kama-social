@@ -1,30 +1,30 @@
-import React from "react";
 import MyMessage from "./MyMessage";
 import {
 	addMyMessageActionCreator,
 	updateNewMessageTextActionCreator,
 } from "../../../Redux/dialogsReducer";
+import { connect } from "react-redux";
 
-const MyMessageContainer = props => {
-	const newMessageText = props.store.getState().dialogsPage.newMessageText;
-
-	// textarea onchange listener callback f() -> calls dispatch f() - push chars to BLL
-	const onMessageChange = text => {
-		props.store.dispatch(updateNewMessageTextActionCreator(text));
+const mapStateToProps = state => {
+	return {
+		newMessageText: state.dialogsPage.newMessageText,
 	};
-
-	// button onclick listener callback f() -> calls dispatch f()
-	const onMyMessageClick = () => {
-		props.store.dispatch(addMyMessageActionCreator());
-	};
-
-	return (
-		<MyMessage
-			newMessageText={newMessageText}
-			updateNewMessageText={onMessageChange}
-			addMyMessage={onMyMessageClick}
-		/>
-	);
 };
+
+const mapDispatchToProps = dispatch => {
+	return {
+		updateNewMessageText: text => {
+			dispatch(updateNewMessageTextActionCreator(text));
+		},
+		addMyMessage: () => {
+			dispatch(addMyMessageActionCreator());
+		},
+	};
+};
+
+const MyMessageContainer = connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(MyMessage);
 
 export default MyMessageContainer;

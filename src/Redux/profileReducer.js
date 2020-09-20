@@ -22,7 +22,7 @@ const profileReducer = (state = initialState, action) => {
 		// вызывается в Profile для добавления поста, затем вызывает rerender для переотрисовки UI
 
 		case ADD_MY_POST:
-			if (state.newPostText === "") return;
+			// if (state.newPostText === "") return;
 			const newPost = {
 				id: 10,
 				post: state.newPostText,
@@ -39,7 +39,7 @@ const profileReducer = (state = initialState, action) => {
 };
 
 // action creators - to avoid string typing
-export const updateNewPostTextActionCreator = (text) => ({
+export const updateNewPostTextActionCreator = text => ({
 	type: UPDATE_NEW_POST_TEXT,
 	newText: text,
 });
