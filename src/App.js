@@ -9,6 +9,7 @@ import Music from "./Components/Music/Music";
 import News from "./Components/News/News";
 import { Route } from "react-router-dom";
 import DialogsContainer from "./Components/Dialogs/DialogsContainer";
+import { UsersContainer } from "./Components/Users/UsersContainer";
 
 // верхняя компонента
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
 			<div className={styles.gridContent}>
 				<Route path="/profile" render={() => <Profile />} />
 				<Route path="/dialogs" render={() => <DialogsContainer />} />
+				<Route path="/users" render={() => <UsersContainer />} />
 				<Route path="/news" component={News} />
 				<Route path="/music" component={Music} />
 				<Route path="/settings" component={Settings} />

@@ -1,6 +1,6 @@
 // constants for action types
-const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
-const ADD_MY_POST = "ADD-MY-POST";
+const UPDATE_NEW_POST_TEXT = "UPDATE_NEW_POST_TEXT";
+const ADD_MY_POST = "ADD_MY_POST";
 
 // initial state for first load
 const initialState = {
@@ -41,13 +41,11 @@ const profileReducer = (state = initialState, action) => {
 };
 
 // action creators - to avoid string typing
-export const updateNewPostTextActionCreator = text => ({
+export const updateNewPostTextAC = text => ({
 	type: UPDATE_NEW_POST_TEXT,
 	newText: text,
 });
 
-export const addMyPostActionCreator = () => ({
-	type: ADD_MY_POST,
-});
+export const addMyPostAC = () => ({ type: ADD_MY_POST });
 
 export default profileReducer;

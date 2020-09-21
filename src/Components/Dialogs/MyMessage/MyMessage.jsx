@@ -9,17 +9,10 @@ const MyMessage = props => {
 		props.updateNewMessageText(text);
 	};
 
-	// button onclick listener callback f() -> вызывает пропснутую диспатч функцию
-	const onMyMessageClick = () => props.addMyMessage();
-
 	return (
 		<div className={styles.wrapper}>
-			<textarea
-				className={styles.textarea}
-				onChange={onMessageChange}
-				value={props.newMessageText}
-			></textarea>
-			<button className={styles.button} onClick={onMyMessageClick}>
+			<textarea className={styles.textarea} onChange={onMessageChange} value={props.newMessageText}></textarea>
+			<button className={styles.button} onClick={() => props.addMyMessage()}>
 				Add message
 			</button>
 		</div>

@@ -1,6 +1,6 @@
 // constants for action types
-const UPDATE_NEW_MESSAGE_TEXT = "UPDATE-NEW-MESSAGE-TEXT";
-const ADD_MY_MESSAGE = "ADD-MY-MESSAGE";
+const UPDATE_NEW_MESSAGE_TEXT = "UPDATE_NEW_MESSAGE_TEXT";
+const ADD_MY_MESSAGE = "ADD_MY_MESSAGE";
 
 // initial state for first load
 const initialState = {
@@ -77,11 +77,11 @@ const dialogsReducer = (state = initialState, action) => {
 };
 
 // action creators - to avoid string typing
-export const updateNewMessageTextActionCreator = text => ({
+export const updateNewMessageTextAC = text => ({
 	type: UPDATE_NEW_MESSAGE_TEXT,
 	newText: text,
 });
 
-export const addMyMessageActionCreator = () => ({ type: ADD_MY_MESSAGE });
+export const addMyMessageAC = () => ({ type: ADD_MY_MESSAGE });
 
 export default dialogsReducer;

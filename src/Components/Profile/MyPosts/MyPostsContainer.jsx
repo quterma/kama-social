@@ -1,8 +1,5 @@
 import MyPosts from "./MyPosts";
-import {
-	addMyPostActionCreator,
-	updateNewPostTextActionCreator,
-} from "../../../Redux/profileReducer";
+import { addMyPostAC, updateNewPostTextAC } from "../../../Redux/profileReducer";
 import { connect } from "react-redux";
 
 // берет стейт из редакс стора и возвращает ветку profilePage
@@ -16,12 +13,8 @@ const mapStateToProps = state => {
 // берет нужные диспатч методы из редакс стора
 const mapDispatchToProps = dispatch => {
 	return {
-		updateNewPostText: text => {
-			dispatch(updateNewPostTextActionCreator(text));
-		},
-		addMyPost: () => {
-			dispatch(addMyPostActionCreator());
-		},
+		updateNewPostText: text => dispatch(updateNewPostTextAC(text)),
+		addMyPost: () => dispatch(addMyPostAC()),
 	};
 };
 
