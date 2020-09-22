@@ -29,7 +29,7 @@
 
 .active {
 	color: rgb(33, 49, 138);
-	background: no-repeat center / 100% url("./active_nav.png");
+	background: no-repeat center / 100% url("./../../assets/images/active_nav.png");
 }
 
 .margin50 {
