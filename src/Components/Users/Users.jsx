@@ -5,10 +5,7 @@ import avatar from "./../../assets/images/ava-2.png";
 
 //Dem Class component
 export default class Users extends Component {
-	constructor(props) {
-		super(props);
-
-		// server request
+	componentDidMount() {
 		axios
 			.get("https://social-network.samuraijs.com/api/1.0/users")
 			.then(response => this.props.setUsers(response.data.items));
