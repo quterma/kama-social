@@ -6,3 +6,15 @@
 	height: 70px;
 	border-radius: 50%;
 }
+.pageSelectorsContainer {
+	color: blue;
+	width: 200px;
+	height: 20px;
+	border: 1px solid blue;
+	display: flex;
+	justify-content: space-evenly;
+}
+.selectedPage {
+	font-weight: bold;
+	color: red;
+}
