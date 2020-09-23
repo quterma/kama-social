@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import {
-	followAC,
-	unfollowAC,
-	setUsersAC,
-	setCurrentPageAC,
-	setTotalUsersCountAC,
-	toggleIsFetchingAC,
+	follow,
+	unfollow,
+	setUsers,
+	setCurrentPage,
+	setTotalUsersCount,
+	toggleIsFetching,
 } from "./../../Redux/usersReducer";
 import * as axios from "axios";
 import { Users } from "./Users";
@@ -73,15 +73,13 @@ const mapStateToProps = state => {
 };
 
 // берет нужные диспатч методы из редакс стора
-const mapDispatchToProps = dispatch => {
-	return {
-		follow: userId => dispatch(followAC(userId)),
-		unfollow: userId => dispatch(unfollowAC(userId)),
-		setUsers: users => dispatch(setUsersAC(users)),
-		setCurrentPage: pageNumber => dispatch(setCurrentPageAC(pageNumber)),
-		setTotalUsersCount: totalCount => dispatch(setTotalUsersCountAC(totalCount)),
-		toggleIsFetching: isFetching => dispatch(toggleIsFetchingAC(isFetching)),
-	};
+const mapDispatchToProps = {
+	follow,
+	unfollow,
+	setUsers,
+	setCurrentPage,
+	setTotalUsersCount,
+	toggleIsFetching,
 };
 
 export const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersApiComponent);

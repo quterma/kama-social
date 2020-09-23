@@ -1,5 +1,5 @@
 import MyPosts from "./MyPosts";
-import { addMyPostAC, updateNewPostTextAC } from "../../../Redux/profileReducer";
+import { addMyPost, updateNewPostText } from "../../../Redux/profileReducer";
 import { connect } from "react-redux";
 
 // берет стейт из редакс стора и возвращает ветку profilePage
@@ -11,11 +11,9 @@ const mapStateToProps = state => {
 };
 
 // берет нужные диспатч методы из редакс стора
-const mapDispatchToProps = dispatch => {
-	return {
-		updateNewPostText: text => dispatch(updateNewPostTextAC(text)),
-		addMyPost: () => dispatch(addMyPostAC()),
-	};
+const mapDispatchToProps = {
+	updateNewPostText,
+	addMyPost,
 };
 
 // передает пропсы (из mapStateToProps) в компоненту MyPosts, и вызывает MyPosts (React-Redux)

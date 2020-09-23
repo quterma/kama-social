@@ -41,11 +41,11 @@ const profileReducer = (state = initialState, action) => {
 };
 
 // action creators - to avoid string typing
-export const updateNewPostTextAC = text => ({
+export const updateNewPostText = text => ({
 	type: UPDATE_NEW_POST_TEXT,
 	newText: text,
 });
 
-export const addMyPostAC = () => ({ type: ADD_MY_POST });
+export const addMyPost = () => ({ type: ADD_MY_POST });
 
 export default profileReducer;

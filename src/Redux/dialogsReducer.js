@@ -77,11 +77,11 @@ const dialogsReducer = (state = initialState, action) => {
 };
 
 // action creators - to avoid string typing
-export const updateNewMessageTextAC = text => ({
+export const updateNewMessageText = text => ({
 	type: UPDATE_NEW_MESSAGE_TEXT,
 	newText: text,
 });
 
-export const addMyMessageAC = () => ({ type: ADD_MY_MESSAGE });
+export const addMyMessage = () => ({ type: ADD_MY_MESSAGE });
 
 export default dialogsReducer;
