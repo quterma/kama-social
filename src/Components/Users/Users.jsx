@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Users.module.css";
 import avatar from "./../../assets/images/ava-2.png";
+import { NavLink } from "react-router-dom";
 
 //Dem component
 export const Users = props => {
@@ -12,6 +13,7 @@ export const Users = props => {
 
 	return (
 		<div className={styles.wrapper}>
+			{/* element with page numbers/buttons */}
 			<div className={styles.pageSelectorsContainer}>
 				{pages.map(page => (
 					<span
@@ -23,12 +25,17 @@ export const Users = props => {
 					</span>
 				))}
 			</div>
+			{/* mapping users elements */}
 			{props.users.map(user => (
 				<div key={user.id}>
 					<span>
-						<div>
-							<img className={styles.avatar} src={user.photos.small != null ? user.photos.small : avatar} alt="" />
-						</div>
+						{/* avatar */}
+						<NavLink to={"/Profile/" + user.id}>
+							<div>
+								<img className={styles.avatar} src={user.photos.small != null ? user.photos.small : avatar} alt="" />
+							</div>
+						</NavLink>
+						{/* button toggler follow/unfollow */}
 						<div>
 							{user.followed ? (
 								<button onClick={() => props.unfollow(user.id)}>Unfollow</button>
@@ -38,10 +45,12 @@ export const Users = props => {
 						</div>
 					</span>
 					<span>
+						{/* user's name and status */}
 						<span>
 							<div>{user.name}</div>
 							<div>{user.status}</div>
 						</span>
+						{/* user's location */}
 						<span>
 							<div>{"user.location.country"}</div>
 							<div>{"user.location.city"}</div>

@@ -1,5 +1,5 @@
 body {
-	background: repeat url(./Images/background_image.png);
+	background: repeat url(./../src/assets/images/background_image.png);
 }
 
 .wrapper {

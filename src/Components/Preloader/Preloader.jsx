@@ -1,7 +1,7 @@
 import React from "react";
-import styles from "./Fetching.module.css";
+import styles from "./Preloader.module.css";
 
-export const Fetching = () => {
+export const Preloader = () => {
 	return (
 		<div class={styles.ldsRing}>
 			<div></div>

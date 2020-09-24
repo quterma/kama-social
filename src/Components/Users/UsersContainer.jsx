@@ -10,7 +10,7 @@ import {
 } from "./../../Redux/usersReducer";
 import * as axios from "axios";
 import { Users } from "./Users";
-import { Fetching } from "./../Fetching/Fetching";
+import { Preloader } from "./../Preloader/Preloader";
 
 // Class component - container for ajax requests
 class UsersApiComponent extends Component {
@@ -46,7 +46,7 @@ class UsersApiComponent extends Component {
 	render() {
 		return (
 			<>
-				{this.props.isFetching && <Fetching />}
+				{this.props.isFetching && <Preloader />}
 				<Users
 					totalUsersCount={this.props.totalUsersCount}
 					pageSize={this.props.pageSize}
