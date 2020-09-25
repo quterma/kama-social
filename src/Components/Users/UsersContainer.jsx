@@ -10,7 +10,7 @@ import {
 } from "./../../Redux/usersReducer";
 import * as axios from "axios";
 import { Users } from "./Users";
-import { Preloader } from "./../Preloader/Preloader";
+import { Preloader } from "./../Common/Preloader/Preloader";
 
 // Class component - container for ajax requests
 class UsersApiComponent extends Component {
