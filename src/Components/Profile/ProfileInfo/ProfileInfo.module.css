@@ -1,12 +1,56 @@
-.image {
-	width: 100%;
+.wrapper {
+	background-color: rgb(150, 203, 250, 0.7);
+	padding: 0 20px;
+	text-align: center;
+}
+
+.avatarWrapper {
+	text-align: center;
 }
 
 .avatar {
 	width: 200px;
+	height: 200px;
 	display: inline-block;
+	margin-top: 20px;
 }
 
-.description {
-	display: inline-block;
+.name {
+	font-family: "Gorditas", cursive;
+	font-size: 24px;
+	color: rgb(245, 33, 33);
+	margin-top: 20px;
+}
+
+.aboutMe {
+	font-family: "Gorditas", cursive;
+	font-size: 16px;
+	color: rgb(245, 33, 210);
+	margin-top: 20px;
+}
+
+.lookingForAJobContainer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 20px;
+}
+
+.lookingForAJob {
+	font-size: 24px;
+	color: rgb(62, 62, 211);
+}
+
+.lookingForAJobDescription {
+	margin-left: 20px;
+	font-family: "Gorditas", cursive;
+	font-size: 16px;
+	color: rgb(62, 62, 211);
+}
+
+.socialContainer {
+	margin-top: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }

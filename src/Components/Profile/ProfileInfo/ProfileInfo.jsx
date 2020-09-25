@@ -1,21 +1,31 @@
 import React from "react";
 import styles from "./ProfileInfo.module.css";
-import { Preloader } from "./../../Preloader/Preloader";
+import { Preloader } from "../../Common/Preloader/Preloader";
+import { IconLink } from "./../../Common/IconLink/IconLink";
 
 //Дем компонента
 const ProfileInfo = props => {
 	if (!props.profile) return <Preloader />;
-
+	const contacts = Object.entries(props.profile.contacts);
+	const socialElements = contacts.map((contact, i) =>
+		contact[1] ? <IconLink key={i} network={contact[0]} link={contact[1]} /> : null
+	);
 	return (
-		<>
-			{/* картинка-обои сверху */}
-			<img src="https://picsum.photos/1000/150" className={styles.image} alt="sea" />
-
-			<div>
+		<div className={styles.wrapper}>
+			<div className={styles.avatarWrapper}>
 				<img className={styles.avatar} alt="avatar" src={props.profile.photos.large} />
-				<div className={styles.description}>description</div>
 			</div>
-		</>
+			<div className={styles.name}>{props.profile.fullName}</div>
+			<div className={styles.aboutMe}>{props.profile.aboutMe}</div>
+			<div className={styles.lookingForAJobContainer}>
+				<i
+					className={`${styles.lookingForAJob} ${props.profile.lookingForAJob ? "fas fa-gamepad" : "fas fa-user-tie"}`}
+				/>
+				<div className={styles.lookingForAJobDescription}>{props.profile.lookingForAJobDescription}</div>
+			</div>
+
+			<div className={styles.socialContainer}>{socialElements}</div>
+		</div>
 	);
 };
 

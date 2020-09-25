@@ -1,0 +1,19 @@
+.wrapper {
+	display: grid;
+	grid-template-rows: 130px 1fr;
+	grid-template-columns: 2fr 1fr;
+	gap: 5px;
+	width: 100%;
+	margin: 0 auto;
+	height: 100%;
+}
+
+.header {
+	grid-column: 1 / -1;
+	background: left / contain url("./../../assets/images/children_row.png"),
+		no-repeat left bottom / cover rgb(235, 234, 209, 0.5) url("./../../assets/images/space_1200.jpg");
+}
+
+.headerImage {
+	height: 100%;
+}
