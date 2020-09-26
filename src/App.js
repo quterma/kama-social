@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./App.module.css";
 import "./css/reset.css";
-import Header from "./Components/Header/Header";
 import Navbar from "./Components/Navbar/Navbar";
 import Settings from "./Components/Settings/Settings";
 import Music from "./Components/Music/Music";
@@ -10,12 +9,13 @@ import { Route } from "react-router-dom";
 import DialogsContainer from "./Components/Dialogs/DialogsContainer";
 import { UsersContainer } from "./Components/Users/UsersContainer";
 import ProfileContainer from "./Components/Profile/ProfileContainer";
+import { HeaderContainer } from "./Components/Header/HeaderContainer";
 
 // верхняя компонента
 const App = () => {
 	return (
 		<div className={styles.wrapper}>
-			<Header />
+			<HeaderContainer />
 			<Navbar />
 			<div className={styles.gridContent}>
 				<Route path="/profile/:userId?" render={() => <ProfileContainer />} />

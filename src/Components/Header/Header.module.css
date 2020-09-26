@@ -6,3 +6,9 @@
 .logo {
 	width: 50px;
 }
+
+.loginWrapper {
+	float: right;
+	margin-right: 50px;
+	font-size: 24px;
+}
