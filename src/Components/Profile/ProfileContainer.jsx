@@ -17,9 +17,7 @@ class ProfileContainer extends Component {
 			userId = 11610;
 		}
 
-		// this.props.toggleIsFetching(true);
 		axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`).then(response => {
-			// this.props.toggleIsFetching(false);
 			this.props.setUserProfile(response.data);
 		});
 	}

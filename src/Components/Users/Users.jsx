@@ -2,12 +2,13 @@ import React from "react";
 import styles from "./Users.module.css";
 import avatar from "./../../assets/images/ava-2.png";
 import { NavLink } from "react-router-dom";
+import * as axios from "axios";
 
 //Dem component
 export const Users = props => {
-	// const pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
-	const pages = [];
-	for (let i = 1; i <= 8; i++) {
+	const pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
+	const pages = [1, 2, 3];
+	for (let i = pagesCount - 3; i <= pagesCount; i++) {
 		pages.push(i);
 	}
 
@@ -38,9 +39,43 @@ export const Users = props => {
 						{/* button toggler follow/unfollow */}
 						<div>
 							{user.followed ? (
-								<button onClick={() => props.unfollow(user.id)}>Unfollow</button>
+								<button
+									onClick={() => {
+										axios
+											.delete(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`, {
+												withCredentials: true,
+												headers: { "API-KEY": "9d885aec-0e55-4d92-a640-1f14725751f5" },
+											})
+											.then(response => {
+												if (response.data.resultCode === 0) {
+													props.unfollow(user.id);
+												}
+											});
+									}}
+								>
+									Unfollow
+								</button>
 							) : (
-								<button onClick={() => props.follow(user.id)}>Follow</button>
+								<button
+									onClick={() => {
+										axios
+											.post(
+												`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`,
+												{},
+												{
+													withCredentials: true,
+													headers: { "API-KEY": "9d885aec-0e55-4d92-a640-1f14725751f5" },
+												}
+											)
+											.then(response => {
+												if (response.data.resultCode === 0) {
+													props.follow(user.id);
+												}
+											});
+									}}
+								>
+									Follow
+								</button>
 							)}
 						</div>
 					</span>
