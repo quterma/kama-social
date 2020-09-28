@@ -1,15 +1,15 @@
 import React from "react";
 import styles from "./App.module.css";
 import "./css/reset.css";
-import Navbar from "./Components/Navbar/Navbar";
-import Settings from "./Components/Settings/Settings";
-import Music from "./Components/Music/Music";
-import News from "./Components/News/News";
+import Navbar from "./components/Navbar/Navbar";
+import Settings from "./components/Settings/Settings";
+import Music from "./components/Music/Music";
+import News from "./components/News/News";
 import { Route } from "react-router-dom";
-import DialogsContainer from "./Components/Dialogs/DialogsContainer";
-import { UsersContainer } from "./Components/Users/UsersContainer";
-import ProfileContainer from "./Components/Profile/ProfileContainer";
-import { HeaderContainer } from "./Components/Header/HeaderContainer";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import { UsersContainer } from "./components/Users/UsersContainer";
+import ProfileContainer from "./components/Profile/ProfileContainer";
+import { HeaderContainer } from "./components/Header/HeaderContainer";
 
 // верхняя компонента
 const App = () => {

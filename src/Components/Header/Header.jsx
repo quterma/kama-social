@@ -2,16 +2,13 @@ import React from "react";
 import styles from "./Header.module.css";
 import { NavLink } from "react-router-dom";
 import incognito from "./../../assets/images/incognito.png";
+import logo from "./../../assets/images/react.png";
 
 // Дем компонента
 const Header = props => {
 	return (
 		<header className={styles.wrapper}>
-			<img
-				className={styles.logo}
-				src="https://www.pngitem.com/pimgs/m/664-6644509_icon-react-js-logo-hd-png-download.png"
-				alt="logo"
-			/>
+			<img className={styles.logo} src={logo} alt="logo" />
 			<div className={styles.loginWrapper}>
 				{props.isAuth ? (
 					<>

@@ -7,10 +7,10 @@ import {
 	setCurrentPage,
 	setTotalUsersCount,
 	toggleIsFetching,
-} from "./../../Redux/usersReducer";
-import * as axios from "axios";
+} from "../../Redux/usersReducer";
 import { Users } from "./Users";
-import { Preloader } from "./../Common/Preloader/Preloader";
+import { Preloader } from "../Common/Preloader/Preloader";
+import { requestsAPI } from "./../../api/api";
 
 // Class component - container for ajax requests
 class UsersApiComponent extends Component {
@@ -20,36 +20,31 @@ class UsersApiComponent extends Component {
 	}
 	componentDidMount() {
 		this.props.toggleIsFetching(true);
-		axios
-			.get(
-				`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`,
-				{ withCredentials: true }
-			)
-			.then(response => {
-				this.props.toggleIsFetching(false);
-				this.props.setUsers(response.data.items);
-				this.props.setTotalUsersCount(response.data.totalCount);
-			});
+		requestsAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
+			this.props.toggleIsFetching(false);
+			this.props.setUsers(data.items);
+			this.props.setTotalUsersCount(data.totalCount);
+		});
 	}
 
 	onPageChanged(pageNumber) {
 		this.props.setCurrentPage(pageNumber);
 		this.props.toggleIsFetching(true);
-		axios
-			.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`, {
-				withCredentials: true,
-			})
-			.then(response => {
-				this.props.toggleIsFetching(false);
-				this.props.setUsers(response.data.items);
-				this.props.setTotalUsersCount(response.data.totalCount);
-			});
+		requestsAPI.getUsers(pageNumber, this.props.pageSize).then(data => {
+			this.props.toggleIsFetching(false);
+			this.props.setUsers(data.items);
+			this.props.setTotalUsersCount(data.totalCount);
+		});
 	}
 
 	render() {
+		if (this.props.isFetching) {
+			return <Preloader />;
+		}
+
 		return (
 			<>
-				{this.props.isFetching && <Preloader />}
+				{/* {this.props.isFetching && <Preloader />} */}
 				<Users
 					totalUsersCount={this.props.totalUsersCount}
 					pageSize={this.props.pageSize}
