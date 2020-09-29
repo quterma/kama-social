@@ -40,11 +40,14 @@ export const Users = props => {
 						<div>
 							{user.followed ? (
 								<button
+									disabled={props.isFollowingInProcess.some(id => id === user.id)}
 									onClick={() => {
+										props.toggleIsFollowingInProgress(true, user.id);
 										requestsAPI.unfollow(user.id).then(data => {
 											if (data.resultCode === 0) {
 												props.unfollow(user.id);
 											}
+											props.toggleIsFollowingInProgress(false, user.id);
 										});
 									}}
 								>
@@ -52,11 +55,14 @@ export const Users = props => {
 								</button>
 							) : (
 								<button
+									disabled={props.isFollowingInProcess.some(id => id === user.id)}
 									onClick={() => {
+										props.toggleIsFollowingInProgress(true, user.id);
 										requestsAPI.follow(user.id).then(data => {
 											if (data.resultCode === 0) {
 												props.follow(user.id);
 											}
+											props.toggleIsFollowingInProgress(false, user.id);
 										});
 									}}
 								>

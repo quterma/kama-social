@@ -11,6 +11,7 @@ import {
 import { Users } from "./Users";
 import { Preloader } from "../Common/Preloader/Preloader";
 import { requestsAPI } from "./../../api/api";
+import { toggleIsFollowingInProgress } from "./../../Redux/usersReducer";
 
 // Class component - container for ajax requests
 class UsersApiComponent extends Component {
@@ -53,6 +54,9 @@ class UsersApiComponent extends Component {
 					unfollow={this.props.unfollow}
 					follow={this.props.follow}
 					onPageChanged={this.onPageChanged}
+					toggleIsFetching={this.props.toggleIsFetching}
+					toggleIsFollowingInProgress={this.props.toggleIsFollowingInProgress}
+					isFollowingInProcess={this.props.isFollowingInProcess}
 				/>
 			</>
 		);
@@ -67,6 +71,7 @@ const mapStateToProps = state => {
 		totalUsersCount: state.usersPage.totalUsersCount,
 		currentPage: state.usersPage.currentPage,
 		isFetching: state.usersPage.isFetching,
+		isFollowingInProcess: state.usersPage.isFollowingInProcess,
 	};
 };
 
@@ -78,6 +83,7 @@ const mapDispatchToProps = {
 	setCurrentPage,
 	setTotalUsersCount,
 	toggleIsFetching,
+	toggleIsFollowingInProgress,
 };
 
 export const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersApiComponent);
