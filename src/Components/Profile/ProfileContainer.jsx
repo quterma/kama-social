@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import Profile from "./Profile";
 import { connect } from "react-redux";
-import { setUserProfile } from "./../../Redux/profileReducer";
+import { getUserProfile } from "./../../Redux/profileReducer";
 import { withRouter } from "react-router-dom";
-import { requestsAPI } from "./../../api/api";
 
 // первый (снизу, с презентационной компоненты) контейнер
 class ProfileContainer extends Component {
@@ -11,12 +10,11 @@ class ProfileContainer extends Component {
 	componentDidMount() {
 		// берет параметр в урле и вставляет в юзерайди
 		let userId = this.props.match.params.userId;
-
 		// если Profile/ без параметра (начальная загрузка, к примеру), то вставится, к примеру мой (пока хардкод)
 		if (!userId) {
 			userId = 11610;
 		}
-		requestsAPI.getProfile(userId).then(data => this.props.setUserProfile(data));
+		this.props.getUserProfile(userId);
 	}
 
 	render() {
@@ -30,6 +28,6 @@ const WithUrlDataContainer = withRouter(ProfileContainer);
 // третий (снизу) контейнер (connect) - берет стейт из редакс стора и передает в пропсы дальше
 const mapStateToProps = state => ({ profile: state.profilePage.profile });
 const mapDispatchToProps = {
-	setUserProfile,
+	getUserProfile,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(WithUrlDataContainer);

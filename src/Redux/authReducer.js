@@ -1,3 +1,6 @@
+import { requestsAPI } from "./../api/api";
+
+// constants for action types
 const SET_USER_DATA = "SET_USER_DATA";
 const SET_USER_PHOTO = "SET_USER_PHOTO";
 
@@ -33,7 +36,20 @@ const authReducer = (state = initialState, action) => {
 };
 
 // action creators - to avoid string typing
-export const setAuthUserData = (id, email, login) => ({ type: SET_USER_DATA, data: { id, email, login } });
-export const setAuthUserPhoto = photo => ({ type: SET_USER_PHOTO, photo });
+const setAuthUserData = (id, email, login) => ({ type: SET_USER_DATA, data: { id, email, login } });
+const setAuthUserPhoto = photo => ({ type: SET_USER_PHOTO, photo });
+
+// thunk creators
+export const getAuth = userId => dispatch => {
+	requestsAPI
+		.getAuth()
+		.then(data => {
+			if (data.resultCode === 0) {
+				const { id, email, login } = data.data;
+				dispatch(setAuthUserData(id, email, login));
+			}
+		})
+		.then(() => requestsAPI.getProfile(userId).then(data => dispatch(setAuthUserPhoto(data.photos.small))));
+};
 
 export default authReducer;

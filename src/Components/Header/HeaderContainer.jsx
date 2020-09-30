@@ -1,23 +1,12 @@
 import React, { Component } from "react";
 import Header from "./Header";
 import { connect } from "react-redux";
-import { setAuthUserData, setAuthUserPhoto } from "./../../Redux/authReducer";
-import { requestsAPI } from "./../../api/api";
+import { getAuth } from "./../../Redux/authReducer";
 
 // class component - container
 class HeaderApiContainer extends Component {
 	componentDidMount() {
-		requestsAPI.getAuth().then(data => {
-			if (data.resultCode === 0) {
-				const { id, email, login } = data.data;
-				this.props.setAuthUserData(id, email, login);
-				this.getLoginPhoto(this.props.id);
-			}
-		});
-	}
-
-	getLoginPhoto(userId) {
-		requestsAPI.getProfile(userId).then(data => this.props.setAuthUserPhoto(data.photos.small));
+		this.props.getAuth(this.props.id);
 	}
 
 	render() {
@@ -31,6 +20,6 @@ const mstp = state => ({
 	id: state.auth.id,
 	photo: state.auth.photo,
 });
-const mdtp = { setAuthUserData, setAuthUserPhoto };
+const mdtp = { getAuth };
 
 export const HeaderContainer = connect(mstp, mdtp)(HeaderApiContainer);

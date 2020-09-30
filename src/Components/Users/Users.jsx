@@ -1,8 +1,7 @@
 import React from "react";
 import styles from "./Users.module.css";
-import avatar from "./../../assets/images/ava-2.png";
+import avatar from "./../../assets/images/incognito.png";
 import { NavLink } from "react-router-dom";
-import { requestsAPI } from "./../../api/api";
 
 //Dem component
 export const Users = props => {
@@ -41,30 +40,14 @@ export const Users = props => {
 							{user.followed ? (
 								<button
 									disabled={props.isFollowingInProcess.some(id => id === user.id)}
-									onClick={() => {
-										props.toggleIsFollowingInProgress(true, user.id);
-										requestsAPI.unfollow(user.id).then(data => {
-											if (data.resultCode === 0) {
-												props.unfollow(user.id);
-											}
-											props.toggleIsFollowingInProgress(false, user.id);
-										});
-									}}
+									onClick={() => props.unfollow(user.id)}
 								>
 									Unfollow
 								</button>
 							) : (
 								<button
 									disabled={props.isFollowingInProcess.some(id => id === user.id)}
-									onClick={() => {
-										props.toggleIsFollowingInProgress(true, user.id);
-										requestsAPI.follow(user.id).then(data => {
-											if (data.resultCode === 0) {
-												props.follow(user.id);
-											}
-											props.toggleIsFollowingInProgress(false, user.id);
-										});
-									}}
+									onClick={() => props.follow(user.id)}
 								>
 									Follow
 								</button>

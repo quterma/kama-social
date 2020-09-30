@@ -1,3 +1,5 @@
+import { requestsAPI } from "./../api/api";
+
 // constants for action types
 const UPDATE_NEW_POST_TEXT = "UPDATE_NEW_POST_TEXT";
 const ADD_MY_POST = "ADD_MY_POST";
@@ -49,6 +51,11 @@ const profileReducer = (state = initialState, action) => {
 // action creators - to avoid string typing
 export const updateNewPostText = text => ({ type: UPDATE_NEW_POST_TEXT, newText: text });
 export const addMyPost = () => ({ type: ADD_MY_POST });
-export const setUserProfile = profile => ({ type: SET_USER_PROFILE, profile });
+const setUserProfile = profile => ({ type: SET_USER_PROFILE, profile });
+
+// thunk creators
+export const getUserProfile = userId => dispatch => {
+	requestsAPI.getProfile(userId).then(data => dispatch(setUserProfile(data)));
+};
 
 export default profileReducer;
