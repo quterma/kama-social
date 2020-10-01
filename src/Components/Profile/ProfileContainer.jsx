@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import Profile from "./Profile";
 import { connect } from "react-redux";
 import { getUserProfile } from "./../../Redux/profileReducer";
-import { Redirect, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
+import { withAuthRedirect } from "./../../hoc/withAuthRedirect";
 
 // первый (снизу, с презентационной компоненты) контейнер
 class ProfileContainer extends Component {
@@ -18,19 +19,17 @@ class ProfileContainer extends Component {
 	}
 
 	render() {
-		// if not authorized - redirect to login
-		if (!this.props.isAuth) return <Redirect to="/login" />;
-
 		return <Profile {...this.props} profile={this.props.profile} />;
 	}
 }
 
+// HOCing for redirect
+const AuthRedirectComponent = withAuthRedirect(ProfileContainer);
+
 // второй контейнер - берет данный из URL адресной строки и передает дальше
-const WithUrlDataContainer = withRouter(ProfileContainer);
+const WithUrlDataContainer = withRouter(AuthRedirectComponent);
 
 // третий (снизу) контейнер (connect) - берет стейт из редакс стора и передает в пропсы дальше
-const mapStateToProps = state => ({ profile: state.profilePage.profile, isAuth: state.auth.isAuth });
-const mapDispatchToProps = {
-	getUserProfile,
-};
-export default connect(mapStateToProps, mapDispatchToProps)(WithUrlDataContainer);
+const mstp = state => ({ profile: state.profilePage.profile });
+const mdtp = { getUserProfile };
+export default connect(mstp, mdtp)(WithUrlDataContainer);

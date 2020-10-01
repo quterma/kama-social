@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { follow, unfollow, setCurrentPage, getUsers } from "../../Redux/usersReducer";
 import { Users } from "./Users";
 import { Preloader } from "../Common/Preloader/Preloader";
+import { withAuthRedirect } from "./../../hoc/withAuthRedirect";
 
 // Class component - container for ajax requests
 class UsersApiComponent extends Component {
@@ -61,4 +62,7 @@ const mapDispatchToProps = {
 	getUsers,
 };
 
-export const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersApiComponent);
+// HOCing for redirect
+const AuthRedirectComponent = withAuthRedirect(UsersApiComponent);
+
+export const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(AuthRedirectComponent);
