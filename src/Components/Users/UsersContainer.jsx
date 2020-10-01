@@ -4,6 +4,7 @@ import { follow, unfollow, setCurrentPage, getUsers } from "../../Redux/usersRed
 import { Users } from "./Users";
 import { Preloader } from "../Common/Preloader/Preloader";
 import { withAuthRedirect } from "./../../hoc/withAuthRedirect";
+import { compose } from "redux";
 
 // Class component - container for ajax requests
 class UsersApiComponent extends Component {
@@ -44,7 +45,7 @@ class UsersApiComponent extends Component {
 }
 
 // берет стейт из редакс стора и возвращает ветку newMessageText
-const mapStateToProps = state => {
+const mstp = state => {
 	return {
 		users: state.usersPage.users,
 		pageSize: state.usersPage.pageSize,
@@ -55,14 +56,12 @@ const mapStateToProps = state => {
 };
 
 // берет нужные диспатч методы из редакс стора
-const mapDispatchToProps = {
+const mdtp = {
 	follow,
 	unfollow,
 	setCurrentPage,
 	getUsers,
 };
 
-// HOCing for redirect
-const AuthRedirectComponent = withAuthRedirect(UsersApiComponent);
-
-export const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(AuthRedirectComponent);
+// compose (from redux) объединяет несколько Хоков и прочих надстроек - аргументы в обратной очередности от вызова
+export default compose(connect(mstp, mdtp), withAuthRedirect)(UsersApiComponent);

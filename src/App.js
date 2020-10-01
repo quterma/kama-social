@@ -7,7 +7,7 @@ import Music from "./components/Music/Music";
 import News from "./components/News/News";
 import { Route } from "react-router-dom";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
-import { UsersContainer } from "./components/Users/UsersContainer";
+import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import { HeaderContainer } from "./components/Header/HeaderContainer";
 import LoginPage from "./components/Login/Login";

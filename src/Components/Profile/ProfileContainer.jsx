@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { getUserProfile } from "./../../Redux/profileReducer";
 import { withRouter } from "react-router-dom";
 import { withAuthRedirect } from "./../../hoc/withAuthRedirect";
+import { compose } from "redux";
 
 // первый (снизу, с презентационной компоненты) контейнер
 class ProfileContainer extends Component {
@@ -23,13 +24,8 @@ class ProfileContainer extends Component {
 	}
 }
 
-// HOCing for redirect
-const AuthRedirectComponent = withAuthRedirect(ProfileContainer);
-
-// второй контейнер - берет данный из URL адресной строки и передает дальше
-const WithUrlDataContainer = withRouter(AuthRedirectComponent);
-
-// третий (снизу) контейнер (connect) - берет стейт из редакс стора и передает в пропсы дальше
 const mstp = state => ({ profile: state.profilePage.profile });
 const mdtp = { getUserProfile };
-export default connect(mstp, mdtp)(WithUrlDataContainer);
+
+// compose (from redux) объединяет несколько Хоков и прочих надстроек - аргументы в обратной очередности от вызова
+export default compose(connect(mstp, mdtp), withRouter, withAuthRedirect)(ProfileContainer);
