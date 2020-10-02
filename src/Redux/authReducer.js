@@ -1,4 +1,4 @@
-import { requestsAPI } from "./../api/api";
+import { profileAPI, authAPI } from "./../api/api";
 
 // constants for action types
 const SET_USER_DATA = "SET_USER_DATA";
@@ -41,7 +41,7 @@ const setAuthUserPhoto = photo => ({ type: SET_USER_PHOTO, photo });
 
 // thunk creators
 export const getAuth = userId => dispatch => {
-	requestsAPI
+	authAPI
 		.getAuth()
 		.then(data => {
 			if (data.resultCode === 0) {
@@ -49,7 +49,7 @@ export const getAuth = userId => dispatch => {
 				dispatch(setAuthUserData(id, email, login));
 			}
 		})
-		.then(() => requestsAPI.getProfile(userId).then(data => dispatch(setAuthUserPhoto(data.photos.small))));
+		.then(() => profileAPI.getProfile(userId).then(data => dispatch(setAuthUserPhoto(data.photos.small))));
 };
 
 export default authReducer;

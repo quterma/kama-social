@@ -1,4 +1,4 @@
-import { requestsAPI } from "./../api/api";
+import { usersAPI } from "./../api/api";
 
 // constants for action types
 const FOLLOW = "FOLLOW";
@@ -84,7 +84,7 @@ const toggleIsFollowingInProgress = (isFetching, userId) => ({
 export const getUsers = (currentPage, pageSize) => {
 	return dispatch => {
 		dispatch(toggleIsFetching(true));
-		requestsAPI.getUsers(currentPage, pageSize).then(data => {
+		usersAPI.getUsers(currentPage, pageSize).then(data => {
 			dispatch(toggleIsFetching(false));
 			dispatch(setUsers(data.items));
 			dispatch(setTotalUsersCount(data.totalCount));
@@ -94,7 +94,7 @@ export const getUsers = (currentPage, pageSize) => {
 export const follow = userId => {
 	return dispatch => {
 		dispatch(toggleIsFollowingInProgress(true, userId));
-		requestsAPI.follow(userId).then(data => {
+		usersAPI.follow(userId).then(data => {
 			if (data.resultCode === 0) {
 				dispatch(followAC(userId));
 			}
@@ -105,7 +105,7 @@ export const follow = userId => {
 export const unfollow = userId => {
 	return dispatch => {
 		dispatch(toggleIsFollowingInProgress(true, userId));
-		requestsAPI.unfollow(userId).then(data => {
+		usersAPI.unfollow(userId).then(data => {
 			if (data.resultCode === 0) {
 				dispatch(unfollowAC(userId));
 			}

@@ -1,10 +1,12 @@
 .wrapper {
 	grid-column: 1 / -1;
 	background-color: rgb(235, 234, 209);
+	padding: 30px;
 }
 
 .logo {
-	width: 50px;
+	display: inline-block;
+	height: 50px;
 }
 
 .loginWrapper {
@@ -17,4 +19,17 @@
 	width: 20px;
 	height: 20px;
 	border-radius: 50%;
+}
+
+.apiLink {
+	display: inline;
+	margin-left: 150px;
+	font-size: 1.5rem;
+	color: rgb(255, 0, 242);
+	opacity: 0.5;
+}
+
+.apiLink:hover {
+	opacity: 1;
+	font-size: 1.55rem;
 }

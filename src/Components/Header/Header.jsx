@@ -9,6 +9,9 @@ const Header = props => {
 	return (
 		<header className={styles.wrapper}>
 			<img className={styles.logo} src={logo} alt="logo" />
+			<a className={styles.apiLink} target="_blank" rel="noopener noreferrer" href="https://social-network.samuraijs.com">
+				SamuraiJS Social Network API
+			</a>
 			<div className={styles.loginWrapper}>
 				{props.isAuth ? (
 					<>

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Profile from "./Profile";
 import { connect } from "react-redux";
-import { getUserProfile } from "./../../Redux/profileReducer";
+import { getUserProfile, getStatus, updateStatus } from "./../../Redux/profileReducer";
 import { withRouter } from "react-router-dom";
 import { withAuthRedirect } from "./../../hoc/withAuthRedirect";
 import { compose } from "redux";
@@ -17,15 +17,16 @@ class ProfileContainer extends Component {
 			userId = 11610;
 		}
 		this.props.getUserProfile(userId);
+		this.props.getStatus(userId);
 	}
 
 	render() {
-		return <Profile {...this.props} profile={this.props.profile} />;
+		return <Profile {...this.props} profile={this.props.profile} status={this.props.status} updateStatus={this.props.updateStatus} />;
 	}
 }
 
-const mstp = state => ({ profile: state.profilePage.profile });
-const mdtp = { getUserProfile };
+const mstp = state => ({ profile: state.profilePage.profile, status: state.profilePage.status });
+const mdtp = { getUserProfile, getStatus, updateStatus };
 
 // compose (from redux) объединяет несколько Хоков и прочих надстроек - аргументы в обратной очередности от вызова
 export default compose(connect(mstp, mdtp), withRouter, withAuthRedirect)(ProfileContainer);

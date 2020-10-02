@@ -22,6 +22,13 @@
 	margin-top: 20px;
 }
 
+.aboutMe {
+	font-family: "Gorditas", cursive;
+	font-size: 20px;
+	color: rgb(245, 153, 33);
+	margin-top: 20px;
+}
+
 .lookingForAJobContainer {
 	display: flex;
 	align-items: center;
