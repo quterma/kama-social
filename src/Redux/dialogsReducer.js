@@ -1,5 +1,4 @@
 // constants for action types
-const UPDATE_NEW_MESSAGE_TEXT = "UPDATE_NEW_MESSAGE_TEXT";
 const ADD_MY_MESSAGE = "ADD_MY_MESSAGE";
 
 // initial state for first load
@@ -43,32 +42,21 @@ const initialState = {
 		{ id: 4, message: "Yo" },
 		{ id: 5, message: "Yo" },
 	],
-	newMessageText: "",
 };
 
-// get state and action, make COPE of state!, change it and return new state (if no changes - returns old one)
+// get state and action, make COPY of state!, change it and return new state (if no changes - returns old one)
 const dialogsReducer = (state = initialState, action) => {
 	switch (action.type) {
-		// вызывается в MyMessage при изменении value элемента textarea для изменения стейта с последующей переотрисовкой UI
-		case UPDATE_NEW_MESSAGE_TEXT:
-			return {
-				...state,
-				newMessageText: action.newText,
-			};
-
 		// вызывается в Dialogs для добавления мессаги в стейт с последующей переотрисовкой UI
 		case ADD_MY_MESSAGE:
 			if (state.newMessageText === "") return state;
 
 			const newMessage = {
 				id: 10,
-				message: state.newMessageText,
+				message: action.newMessageText,
 			};
-			return {
-				...state,
-				messages: [...state.messages, newMessage],
-				newMessageText: "",
-			};
+
+			return { ...state, messages: [...state.messages, newMessage] };
 
 		// if action not matched - return old state
 		default:
@@ -76,12 +64,7 @@ const dialogsReducer = (state = initialState, action) => {
 	}
 };
 
-// action creators - to avoid string typing
-export const updateNewMessageText = text => ({
-	type: UPDATE_NEW_MESSAGE_TEXT,
-	newText: text,
-});
-
-export const addMyMessage = () => ({ type: ADD_MY_MESSAGE });
+// action creators
+export const addMyMessageAC = newMessageText => ({ type: ADD_MY_MESSAGE, newMessageText });
 
 export default dialogsReducer;

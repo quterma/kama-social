@@ -1,5 +1,5 @@
 import MyMessage from "./MyMessage";
-import { addMyMessage, updateNewMessageText } from "../../../Redux/dialogsReducer";
+import { addMyMessageAC } from "../../../Redux/dialogsReducer";
 import { connect } from "react-redux";
 
 // берет стейт из редакс стора и возвращает ветку newMessageText
@@ -10,9 +10,12 @@ const mapStateToProps = state => {
 };
 
 // берет нужные диспатч методы из редакс стора
-const mapDispatchToProps = {
-	updateNewMessageText,
-	addMyMessage,
+const mapDispatchToProps = dispatch => {
+	return {
+		addMyMessage: newMessageText => {
+			dispatch(addMyMessageAC(newMessageText));
+		},
+	};
 };
 
 // передает пропсы (из mapStateToProps) в компоненту MyMessage, и вызывает MyMessage (React-Redux)

@@ -4,3 +4,16 @@
 	font-size: 5rem;
 	color: red;
 }
+
+.label {
+	margin: 10px;
+}
+
+.field {
+	margin: 20px;
+	display: block;
+}
+
+.button {
+	margin: 10px;
+}

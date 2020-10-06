@@ -1,20 +1,18 @@
 import React from "react";
 import styles from "./MyMessage.module.css";
+import AddMessageForm from "./../../Common/Forms/AddMessageForm/AddMessageForm";
 
 // Дем компонента
 const MyMessage = props => {
-	// textarea onchange listener callback f() -> вызывает пропснутую диспатч функцию
-	const onMessageChange = event => {
-		const text = event.target.value;
-		props.updateNewMessageText(text);
+	//code for onSubmit process
+	const addNewMessage = (values, { setSubmitting }) => {
+		props.addMyMessage(values.textarea);
+		setSubmitting(false);
 	};
 
 	return (
 		<div className={styles.wrapper}>
-			<textarea className={styles.textarea} onChange={onMessageChange} value={props.newMessageText}></textarea>
-			<button className={styles.button} onClick={() => props.addMyMessage()}>
-				Add message
-			</button>
+			<AddMessageForm onSubmit={addNewMessage} />
 		</div>
 	);
 };
