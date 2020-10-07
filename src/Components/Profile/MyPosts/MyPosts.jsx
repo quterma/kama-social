@@ -9,10 +9,7 @@ const MyPosts = props => {
 	const postsElements = props.posts.map(post => <Post key={post.id} post={post.post} likes={post.likes} />);
 
 	//code for onSubmit process
-	const addNewPost = (values, { setSubmitting }) => {
-		props.addMyPost(values.textarea);
-		setSubmitting(false);
-	};
+	const addNewPost = values => props.addMyPost(values.textarea);
 
 	return (
 		<div className={styles.wrapper}>

@@ -5,10 +5,7 @@ import AddMessageForm from "./../../Common/Forms/AddMessageForm/AddMessageForm";
 // Дем компонента
 const MyMessage = props => {
 	//code for onSubmit process
-	const addNewMessage = (values, { setSubmitting }) => {
-		props.addMyMessage(values.textarea);
-		setSubmitting(false);
-	};
+	const addNewMessage = values => props.addMyMessage(values.textarea);
 
 	return (
 		<div className={styles.wrapper}>

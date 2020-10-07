@@ -49,7 +49,7 @@ const dialogsReducer = (state = initialState, action) => {
 	switch (action.type) {
 		// вызывается в Dialogs для добавления мессаги в стейт с последующей переотрисовкой UI
 		case ADD_MY_MESSAGE:
-			if (state.newMessageText === "") return state;
+			if (action.newMessageText === "") return state;
 
 			const newMessage = {
 				id: 10,

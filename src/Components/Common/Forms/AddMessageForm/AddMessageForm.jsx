@@ -1,26 +1,22 @@
 import React from "react";
-import { Form, Formik } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
 import styles from "./AddMyMessageForm.module.css";
+
+const initialValues = { textarea: "" };
+const validationSchema = Yup.object().shape({ textarea: Yup.string().max(50, "Too Long!").required("Required!") });
 
 // Formik Form Component
 const AddMessageForm = props => {
 	return (
-		<Formik initialValues={{ textarea: "" }} onSubmit={props.onSubmit}>
-			{({ isSubmitting, values, handleBlur, handleChange }) => (
-				<Form>
-					<textarea
-						className={styles.textarea}
-						name="textarea"
-						value={values.name}
-						onBlur={handleBlur}
-						onChange={handleChange}
-						placeholder="Enter your post"
-					/>
-					<button className={styles.button} type="submit" disabled={isSubmitting}>
-						Add message
-					</button>
-				</Form>
-			)}
+		<Formik initialValues={initialValues} onSubmit={props.onSubmit} validationSchema={validationSchema}>
+			<Form>
+				<Field as="textarea" className={styles.textarea} name="textarea" placeholder="Enter your post" />
+				<ErrorMessage name="textarea" />
+				<button className={styles.button} type="submit">
+					Add message
+				</button>
+			</Form>
 		</Formik>
 	);
 };
