@@ -15,10 +15,11 @@ const Header = props => {
 			<div className={styles.loginWrapper}>
 				{props.isAuth ? (
 					<>
-						<span>
+						<div>
 							<img className={styles.avatar} src={props.photo ? props.photo : incognito} alt="ava" />
-						</span>
-						<span>{props.login}</span>
+						</div>
+						<div>{props.login}</div>
+						<button onClick={props.logout}>Logout</button>
 					</>
 				) : (
 					<NavLink to={"/login"}>Login</NavLink>

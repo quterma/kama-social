@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Header from "./Header";
 import { connect } from "react-redux";
-import { getAuth } from "./../../Redux/authReducer";
+import { getAuth, logout } from "./../../Redux/authReducer";
 
 // class component - container
 class HeaderApiContainer extends Component {
@@ -20,6 +20,6 @@ const mstp = state => ({
 	id: state.auth.id,
 	photo: state.auth.photo,
 });
-const mdtp = { getAuth };
+const mdtp = { getAuth, logout };
 
 export const HeaderContainer = connect(mstp, mdtp)(HeaderApiContainer);

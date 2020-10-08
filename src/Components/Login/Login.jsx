@@ -1,13 +1,16 @@
 import React from "react";
 import LoginForm from "../Common/Forms/LoginForm/LoginForm";
 import styles from "./Login.module.css";
+import { connect } from "react-redux";
+import { login } from "./../../Redux/authReducer";
+import { Redirect } from "react-router-dom";
 
 const Login = props => {
+	if (props.isAuth) return <Redirect to="/profile" />;
+
 	//code for onSubmit process
-	const onSubmit = values => {
-		setTimeout(() => {
-			alert(JSON.stringify(values, null, 2));
-		}, 400);
+	const onSubmit = ({ email, password, rememberMe }) => {
+		props.login(email, password, rememberMe);
 	};
 
 	return (
@@ -18,4 +21,6 @@ const Login = props => {
 	);
 };
 
-export default Login;
+const mstp = state => ({ isAuth: state.auth.isAuth });
+
+export default connect(mstp, { login })(Login);
