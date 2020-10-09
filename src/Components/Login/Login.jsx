@@ -16,11 +16,12 @@ const Login = props => {
 	return (
 		<div>
 			<h1 className={styles.title}>Login Page</h1>
-			<LoginForm onSubmit={onSubmit} />
+			<LoginForm onSubmit={onSubmit} error={props.error} />
 		</div>
 	);
 };
 
-const mstp = state => ({ isAuth: state.auth.isAuth });
+const mstp = state => ({ isAuth: state.auth.isAuth, error: state.auth.error });
+const mdtp = { login };
 
-export default connect(mstp, { login })(Login);
+export default connect(mstp, mdtp)(Login);
