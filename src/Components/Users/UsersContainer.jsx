@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { follow, unfollow, setCurrentPage, getUsers } from "../../Redux/usersReducer";
 import { Users } from "./Users";
 import { Preloader } from "../Common/Preloader/Preloader";
-import { withAuthRedirect } from "./../../hoc/withAuthRedirect";
 import { compose } from "redux";
 
 // Class component - container for ajax requests
@@ -64,4 +63,4 @@ const mdtp = {
 };
 
 // compose (from redux) объединяет несколько Хоков и прочих надстроек - аргументы в обратной очередности от вызова
-export default compose(connect(mstp, mdtp), withAuthRedirect)(UsersApiComponent);
+export default compose(connect(mstp, mdtp))(UsersApiComponent);

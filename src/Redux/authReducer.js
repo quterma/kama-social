@@ -39,17 +39,16 @@ const setAuthUserPhoto = photo => ({ type: SET_USER_PHOTO, photo });
 const setError = error => ({ type: SET_ERROR, error });
 
 // thunk creators
-export const getAuth = userId => dispatch => {
-	authAPI
-		.getAuth()
-		.then(data => {
-			if (data.resultCode === 0) {
-				const { id, email, login } = data.data;
-				dispatch(setAuthUserData(id, email, login, true, null));
-			}
-		})
-		.then(() => profileAPI.getProfile(userId).then(data => dispatch(setAuthUserPhoto(data.photos.small))));
+export const getAuth = () => async dispatch => {
+	const data = await authAPI.getAuth();
+
+	if (data.resultCode === 0) {
+		const { id, email, login } = data.data;
+		await dispatch(setAuthUserData(id, email, login, true, null));
+		await profileAPI.getProfile(id).then(data => dispatch(setAuthUserPhoto(data.photos.small)));
+	}
 };
+
 export const login = (login, password, rememberMe) => dispatch => {
 	authAPI.login(login, password, rememberMe).then(request => {
 		if (request.data.resultCode === 0) {

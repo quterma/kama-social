@@ -12,7 +12,6 @@ const validationSchema = Yup.object().shape({
 
 // Formik Form Component
 const LoginForm = props => {
-	console.log(props.error);
 	return (
 		<Formik initialValues={initialValues} onSubmit={props.onSubmit} validationSchema={validationSchema}>
 			<Form>

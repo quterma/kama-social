@@ -4,6 +4,7 @@ import dialogsReducer from "./dialogsReducer";
 import usersReducer from "./usersReducer";
 import authReducer from "./authReducer";
 import thunkMiddleware from "redux-thunk";
+import appReducer from "./appReducer";
 
 // соединяет наши редьюсеры (см импорт) с создаваемым с помощь редакса стором
 const reducers = combineReducers({
@@ -11,6 +12,7 @@ const reducers = combineReducers({
 	dialogsPage: dialogsReducer,
 	usersPage: usersReducer,
 	auth: authReducer,
+	app: appReducer,
 });
 
 // создает стор, передавая ему редьюсеры и applyMiddleware (layer for thunks)
