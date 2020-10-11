@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { follow, unfollow, setCurrentPage, getUsers } from "../../Redux/usersReducer";
+import { follow, unfollow, setCurrentPage, getUsersThunk } from "../../Redux/usersReducer";
 import { Users } from "./Users";
 import { Preloader } from "../Common/Preloader/Preloader";
 import { compose } from "redux";
+import { getpageSize, getUsers, getTotalUsersCount, getCurrentPage, getIsFollowingInProcess } from './../../Redux/usersSelectors';
 
 // Class component - container for ajax requests
 class UsersApiComponent extends Component {
@@ -12,12 +13,12 @@ class UsersApiComponent extends Component {
 		this.onPageChanged = this.onPageChanged.bind(this);
 	}
 	componentDidMount() {
-		this.props.getUsers(this.props.currentPage, this.props.pageSize);
+		this.props.getUsersThunk(this.props.currentPage, this.props.pageSize);
 	}
 
 	onPageChanged(pageNumber) {
 		this.props.setCurrentPage(pageNumber);
-		this.props.getUsers(pageNumber, this.props.pageSize);
+		this.props.getUsersThunk(pageNumber, this.props.pageSize);
 	}
 
 	render() {
@@ -44,13 +45,23 @@ class UsersApiComponent extends Component {
 }
 
 // берет стейт из редакс стора и возвращает ветку newMessageText
+// const mstp = state => {
+// 	return {
+// 		users: state.usersPage.users,
+// 		pageSize: state.usersPage.pageSize,
+// 		totalUsersCount: state.usersPage.totalUsersCount,
+// 		currentPage: state.usersPage.currentPage,
+// 		isFollowingInProcess: state.usersPage.isFollowingInProcess,
+// 	};
+// };
+
 const mstp = state => {
 	return {
-		users: state.usersPage.users,
-		pageSize: state.usersPage.pageSize,
-		totalUsersCount: state.usersPage.totalUsersCount,
-		currentPage: state.usersPage.currentPage,
-		isFollowingInProcess: state.usersPage.isFollowingInProcess,
+		users: getUsers(state),
+		pageSize: getpageSize(state),
+		totalUsersCount: getTotalUsersCount(state),
+		currentPage: getCurrentPage(state),
+		isFollowingInProcess: getIsFollowingInProcess(state),
 	};
 };
 
@@ -59,7 +70,7 @@ const mdtp = {
 	follow,
 	unfollow,
 	setCurrentPage,
-	getUsers,
+	getUsersThunk,
 };
 
 // compose (from redux) объединяет несколько Хоков и прочих надстроек - аргументы в обратной очередности от вызова
