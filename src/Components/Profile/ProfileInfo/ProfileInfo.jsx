@@ -2,7 +2,8 @@ import React from "react";
 import styles from "./ProfileInfo.module.css";
 import { IconLink } from "./../../Common/IconLink/IconLink";
 import incognito from "./../../../assets/images/incognito.png";
-import ProfileStatus from "./ProfileStatus/ProfileStatus";
+// import ProfileStatus from "./ProfileStatus/ProfileStatus";
+import ProfileStatusWithHooks from './ProfileStatus/ProfileStatusWithHooks';
 
 //Дем компонента
 const ProfileInfo = props => {
@@ -15,7 +16,7 @@ const ProfileInfo = props => {
 			</div>
 			<div className={styles.name}>Fullname: {props.profile.fullName}</div>
 			<div className={styles.aboutMe}>About me: {props.profile.aboutMe}</div>
-			<ProfileStatus status={props.status} updateStatus={props.updateStatus} />
+			<ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus} />
 			<div className={styles.lookingForAJobContainer}>
 				<i className={`${styles.lookingForAJob} ${props.profile.lookingForAJob ? "fas fa-gamepad" : "fas fa-user-tie"}`} />
 				<div className={styles.lookingForAJobDescription}>LFJ description: {props.profile.lookingForAJobDescription}</div>
