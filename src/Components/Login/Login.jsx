@@ -5,18 +5,18 @@ import { connect } from "react-redux";
 import { login } from "./../../Redux/authReducer";
 import { Redirect } from "react-router-dom";
 
-const Login = props => {
-	if (props.isAuth) return <Redirect to="/profile" />;
+const Login = ({ isAuth,login, error }) => {
+	if (isAuth) return <Redirect to="/profile" />;
 
 	//code for onSubmit process
 	const onSubmit = ({ email, password, rememberMe }) => {
-		props.login(email, password, rememberMe);
+		login(email, password, rememberMe);
 	};
 
 	return (
 		<div>
 			<h1 className={styles.title}>Login Page</h1>
-			<LoginForm onSubmit={onSubmit} error={props.error} />
+			<LoginForm onSubmit={onSubmit} error={error} />
 		</div>
 	);
 };

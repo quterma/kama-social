@@ -20,4 +20,5 @@ const store = createStore(reducers, applyMiddleware(thunkMiddleware));
 
 export default store;
 
+// for tests
 window.store = store;

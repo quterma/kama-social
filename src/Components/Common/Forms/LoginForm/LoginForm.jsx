@@ -11,19 +11,19 @@ const validationSchema = Yup.object().shape({
 });
 
 // Formik Form Component
-const LoginForm = props => {
+const LoginForm = ({onSubmit, error}) => {
 	return (
-		<Formik initialValues={initialValues} onSubmit={props.onSubmit} validationSchema={validationSchema}>
+		<Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
 			<Form>
-				<Field className={styles.field} type="email" name="email" placeholder="Enter your email" component={CustomInput} />
+				<Field type="email" name="email" placeholder="Enter your email" component={CustomInput} />
 				<ErrorMessage name="email" component={TextError} />
-				<Field className={styles.field} type="password" name="password" placeholder="Enter your password" component={CustomInput} />
+				<Field type="password" name="password" placeholder="Enter your password" component={CustomInput} />
 				<ErrorMessage name="password" component={TextError} />
 				<label className={styles.label}>
 					<Field type="checkbox" name="rememberMe" />
 					Remember Me
 				</label>
-				{props.error && <h3 className={styles.error}>{props.error}</h3>}
+				{error && <h3 className={styles.error}>{error}</h3>}
 				<button className={styles.button} type="submit">
 					Login
 				</button>

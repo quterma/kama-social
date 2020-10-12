@@ -41,29 +41,26 @@ const setError = error => ({ type: SET_ERROR, error });
 // thunk creators
 export const getAuth = () => async dispatch => {
 	const data = await authAPI.getAuth();
-
 	if (data.resultCode === 0) {
 		const { id, email, login } = data.data;
-		await dispatch(setAuthUserData(id, email, login, true, null));
-		await profileAPI.getProfile(id).then(data => dispatch(setAuthUserPhoto(data.photos.small)));
+		dispatch(setAuthUserData(id, email, login, true, null));
+		profileAPI.getProfile(id).then(data => dispatch(setAuthUserPhoto(data.photos.small)));
 	}
 };
 
-export const login = (login, password, rememberMe) => dispatch => {
-	authAPI.login(login, password, rememberMe).then(request => {
-		if (request.data.resultCode === 0) {
-			dispatch(getAuth(request.data.userId));
-		} else {
-			dispatch(setError(request.data.messages[0]));
-		}
-	});
+export const login = (login, password, rememberMe) => async dispatch => {
+	const request = await authAPI.login(login, password, rememberMe);
+	if (request.data.resultCode === 0) {
+		dispatch(getAuth(request.data.userId));
+	} else {
+		dispatch(setError(request.data.messages[0]));
+	}
 };
-export const logout = () => dispatch => {
-	authAPI.logout().then(request => {
-		if (request.data.resultCode === 0) {
-			dispatch(setAuthUserData(null, null, null, false, null));
-		}
-	});
+export const logout = () => async dispatch => {
+	const request = await authAPI.logout();
+	if (request.data.resultCode === 0) {
+		dispatch(setAuthUserData(null, null, null, false, null));
+	}
 };
 
 export default authReducer;
