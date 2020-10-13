@@ -44,17 +44,6 @@ class UsersApiComponent extends Component {
 	}
 }
 
-// берет стейт из редакс стора и возвращает ветку newMessageText
-// const mstp = state => {
-// 	return {
-// 		users: state.usersPage.users,
-// 		pageSize: state.usersPage.pageSize,
-// 		totalUsersCount: state.usersPage.totalUsersCount,
-// 		currentPage: state.usersPage.currentPage,
-// 		isFollowingInProcess: state.usersPage.isFollowingInProcess,
-// 	};
-// };
-
 const mstp = state => {
 	return {
 		users: getUsers(state),
