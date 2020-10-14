@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Profile from "./Profile";
 import { connect } from "react-redux";
-import { getUserProfile, getStatus, updateStatus, savePhoto } from "./../../Redux/profileReducer";
+import { getUserProfile, getStatus, updateStatus, savePhoto, saveProfile } from "./../../Redux/profileReducer";
 import { withRouter } from "react-router-dom";
 import { withAuthRedirect } from "./../../hoc/withAuthRedirect";
 import { compose } from "redux";
@@ -34,12 +34,13 @@ class ProfileContainer extends Component {
 
 	render() {
 		if (!this.props.profile) return <Preloader />;
-		return <Profile {...this.props} isOwner={!this.props.match.params.userId} savePhoto={this.props.savePhoto} profile={this.props.profile} status={this.props.status} updateStatus={this.props.updateStatus} />;
+		return <Profile {...this.props} isOwner={!this.props.match.params.userId} savePhoto={this.props.savePhoto}
+			profile={this.props.profile} status={this.props.status} updateStatus={this.props.updateStatus} saveProfile={this.props.saveProfile} />;
 	}
 }
 
 const mstp = state => ({ profile: state.profilePage.profile, status: state.profilePage.status, id: state.auth.id });
-const mdtp = { getUserProfile, getStatus, updateStatus, savePhoto };
+const mdtp = { getUserProfile, getStatus, updateStatus, savePhoto, saveProfile };
 
 // compose (from redux) объединяет несколько Хоков и прочих надстроек - аргументы в обратной очередности от вызова
 export default compose(connect(mstp, mdtp), withRouter, withAuthRedirect)(ProfileContainer);

@@ -22,7 +22,7 @@ const authReducer = (state = initialState, action) => {
 			return { ...state, ...action.payload };
 
 		case SET_USER_PHOTO:
-			return { ...state, ...action.photo };
+			return { ...state, ...action };
 
 		case SET_ERROR:
 			return { ...state, ...action };
@@ -44,7 +44,8 @@ export const getAuth = () => async dispatch => {
 	if (data.resultCode === 0) {
 		const { id, email, login } = data.data;
 		dispatch(setAuthUserData(id, email, login, true, null));
-		profileAPI.getProfile(id).then(data => dispatch(setAuthUserPhoto(data.photos.small)));
+		const request = await profileAPI.getProfile(id);
+		dispatch(setAuthUserPhoto(request.photos.small));
 	}
 };
 

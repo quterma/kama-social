@@ -1,19 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./ProfileInfo.module.css";
-import { IconLink } from "./../../Common/IconLink/IconLink";
 import incognito from "./../../../assets/images/incognito.png";
 import ProfileStatusWithHooks from './ProfileStatus/ProfileStatusWithHooks';
+import { ProfileData } from './ProfileData/ProfileData';
+import { ProfileDataForm } from "../../Common/Forms/ProfileDataForm/ProfileDataForm";
 
 //Дем компонента
 const ProfileInfo = props => {
-	const contacts = Object.entries(props.profile.contacts);
-	const socialElements = contacts.map((contact, i) => (contact[1] ? <IconLink key={i} network={contact[0]} link={contact[1]} /> : null));
-
 	const onAvatarSelected = (event) => {
-	if (event.target.files) {
-		props.savePhoto(event.target.files[0]);
+		if (event.target.files) props.savePhoto(event.target.files[0]);
 	}
+
+	const [editMode, setEditMode] = useState(false);
+	const activateEditMode = () => setEditMode(true);
+
+	const onSubmit = (data) => {
+		props.saveProfile(data);
+		setEditMode(false);
 	}
+		
 	
 	return (
 		<div className={styles.wrapper}>
@@ -21,14 +26,11 @@ const ProfileInfo = props => {
 				<img className={styles.avatar} alt="avatar" src={props.profile.photos.large || incognito} />
 			</div>
 			{props.isOwner && <input type='file' onChange={onAvatarSelected}/>}
-			<div className={styles.name}>Fullname: {props.profile.fullName}</div>
-			<div className={styles.aboutMe}>About me: {props.profile.aboutMe}</div>
-			<ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus} isOwner={props.isOwner}/>
-			<div className={styles.lookingForAJobContainer}>
-				<i className={`${styles.lookingForAJob} ${props.profile.lookingForAJob ? "fas fa-gamepad" : "fas fa-user-tie"}`} />
-				<div className={styles.lookingForAJobDescription}>LFJ description: {props.profile.lookingForAJobDescription}</div>
-			</div>
-			<div className={styles.socialContainer}>{socialElements}</div>
+			<ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus} isOwner={props.isOwner} />
+			{editMode ? <ProfileDataForm onSubmit={onSubmit} profile={props.profile}/>
+				: <ProfileData contacts={props.profile.contacts} fullName={props.profile.fullName}
+				aboutMe={props.profile.aboutMe} lookingForAJob={props.profile.lookingForAJob}
+				lookingForAJobDescription={props.profile.lookingForAJobDescription} isOwner={props.isOwner} activateEditMode={activateEditMode}/>}
 		</div>
 	);
 };

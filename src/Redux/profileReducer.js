@@ -6,6 +6,7 @@ const SET_USER_PROFILE = "SET_USER_PROFILE";
 const SET_STATUS = "SET_STATUS";
 const DELETE_POST = "DELETE_POST";
 const SAVE_PHOTO_SUCCESS = "SAVE_PHOTO_SUCCESS";
+// const SAVE_PROFILE_SUCCESS = "SAVE_PROFILE_SUCCESS";
 
 // initial state for first load
 const initialState = {
@@ -46,6 +47,9 @@ const profileReducer = (state = initialState, action) => {
 		case SAVE_PHOTO_SUCCESS:
 			return { ...state, profile: { ...state.profile, photos: action.photos } };
 
+		// case SAVE_PROFILE_SUCCESS:
+		// 	return { ...state, profile: { ...state.profile, photos: action.photos } };
+
 		// if action not matched - return old state
 		default:
 			return state;
@@ -58,6 +62,7 @@ const setUserProfile = profile => ({ type: SET_USER_PROFILE, profile });
 const setStatus = status => ({ type: SET_STATUS, status });
 export const deletePost = postId => ({ type: DELETE_POST, postId });
 export const savePhotoSuccess = photos => ({ type: SAVE_PHOTO_SUCCESS, photos });
+// export const saveProfileSuccess = data => ({ type: SAVE_PROFILE_SUCCESS, data });
 
 // thunk creators
 export const getUserProfile = userId => async dispatch => {
@@ -81,4 +86,13 @@ export const savePhoto = file => async dispatch => {
 		dispatch(savePhotoSuccess(response.data.data.photos));
 	}
 };
+export const saveProfile = profile => async (dispatch, getState) => {
+	const userId = getState().auth.id;
+	const response = await profileAPI.saveProfile(profile);
+	if (response.data.resultCode === 0) {
+		dispatch(getUserProfile(userId));
+		// dispatch(saveProfileSuccess(response.data.data));
+	}
+};
+
 export default profileReducer;
