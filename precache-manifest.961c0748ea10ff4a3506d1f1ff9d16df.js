@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "be84c31b642575efb7084a45b00fb42e",
+    "revision": "1a64bb92a7a2b61df2a14c29afaea74f",
     "url": "/kama-social/index.html"
   },
   {
@@ -16,7 +16,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/kama-social/static/css/5.816c7402.chunk.css"
   },
   {
-    "revision": "edf7f9143730b44b1f8e",
+    "revision": "aa05fe79681b40e21bd4",
     "url": "/kama-social/static/css/6.053f6be7.chunk.css"
   },
   {
@@ -32,7 +32,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/kama-social/static/css/9.d4e4cf8a.chunk.css"
   },
   {
-    "revision": "e69118f2ebd3a6567cf2",
+    "revision": "a84fefac80627171bd3c",
     "url": "/kama-social/static/css/main.44edfc03.chunk.css"
   },
   {
@@ -64,8 +64,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/kama-social/static/js/5.800f5103.chunk.js"
   },
   {
-    "revision": "edf7f9143730b44b1f8e",
-    "url": "/kama-social/static/js/6.0c0cd4ad.chunk.js"
+    "revision": "aa05fe79681b40e21bd4",
+    "url": "/kama-social/static/js/6.6a799879.chunk.js"
   },
   {
     "revision": "a0ad9346aa3a2bfd00f1",
@@ -80,12 +80,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/kama-social/static/js/9.8647a006.chunk.js"
   },
   {
-    "revision": "e69118f2ebd3a6567cf2",
-    "url": "/kama-social/static/js/main.b3dd7a78.chunk.js"
+    "revision": "a84fefac80627171bd3c",
+    "url": "/kama-social/static/js/main.0f07df48.chunk.js"
   },
   {
-    "revision": "0eaae593e7a0012e4a21",
-    "url": "/kama-social/static/js/runtime-main.68ee6a4b.js"
+    "revision": "8bb3dd1fe7784f6d6c1a",
+    "url": "/kama-social/static/js/runtime-main.44c763c0.js"
   },
   {
     "revision": "3d7aa97ab69ba403aec71882187fa1ab",

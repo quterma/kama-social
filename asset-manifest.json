@@ -3,10 +3,10 @@
     "static/js/0.8ad8c1c0.chunk.js": "/kama-social/static/js/0.8ad8c1c0.chunk.js",
     "static/js/0.8ad8c1c0.chunk.js.map": "/kama-social/static/js/0.8ad8c1c0.chunk.js.map",
     "main.css": "/kama-social/static/css/main.44edfc03.chunk.css",
-    "main.js": "/kama-social/static/js/main.b3dd7a78.chunk.js",
-    "main.js.map": "/kama-social/static/js/main.b3dd7a78.chunk.js.map",
-    "runtime-main.js": "/kama-social/static/js/runtime-main.68ee6a4b.js",
-    "runtime-main.js.map": "/kama-social/static/js/runtime-main.68ee6a4b.js.map",
+    "main.js": "/kama-social/static/js/main.0f07df48.chunk.js",
+    "main.js.map": "/kama-social/static/js/main.0f07df48.chunk.js.map",
+    "runtime-main.js": "/kama-social/static/js/runtime-main.44c763c0.js",
+    "runtime-main.js.map": "/kama-social/static/js/runtime-main.44c763c0.js.map",
     "static/js/3.c41b9450.chunk.js": "/kama-social/static/js/3.c41b9450.chunk.js",
     "static/js/3.c41b9450.chunk.js.map": "/kama-social/static/js/3.c41b9450.chunk.js.map",
     "static/css/4.1b82b591.chunk.css": "/kama-social/static/css/4.1b82b591.chunk.css",
@@ -16,8 +16,8 @@
     "static/js/5.800f5103.chunk.js": "/kama-social/static/js/5.800f5103.chunk.js",
     "static/js/5.800f5103.chunk.js.map": "/kama-social/static/js/5.800f5103.chunk.js.map",
     "static/css/6.053f6be7.chunk.css": "/kama-social/static/css/6.053f6be7.chunk.css",
-    "static/js/6.0c0cd4ad.chunk.js": "/kama-social/static/js/6.0c0cd4ad.chunk.js",
-    "static/js/6.0c0cd4ad.chunk.js.map": "/kama-social/static/js/6.0c0cd4ad.chunk.js.map",
+    "static/js/6.6a799879.chunk.js": "/kama-social/static/js/6.6a799879.chunk.js",
+    "static/js/6.6a799879.chunk.js.map": "/kama-social/static/js/6.6a799879.chunk.js.map",
     "static/css/7.bcbdc53c.chunk.css": "/kama-social/static/css/7.bcbdc53c.chunk.css",
     "static/js/7.89713728.chunk.js": "/kama-social/static/js/7.89713728.chunk.js",
     "static/js/7.89713728.chunk.js.map": "/kama-social/static/js/7.89713728.chunk.js.map",
@@ -31,7 +31,7 @@
     "static/js/10.c491f6ca.chunk.js": "/kama-social/static/js/10.c491f6ca.chunk.js",
     "static/js/10.c491f6ca.chunk.js.map": "/kama-social/static/js/10.c491f6ca.chunk.js.map",
     "index.html": "/kama-social/index.html",
-    "precache-manifest.cebfc7b9fc9ff2fd6224ebb9b410ff4f.js": "/kama-social/precache-manifest.cebfc7b9fc9ff2fd6224ebb9b410ff4f.js",
+    "precache-manifest.961c0748ea10ff4a3506d1f1ff9d16df.js": "/kama-social/precache-manifest.961c0748ea10ff4a3506d1f1ff9d16df.js",
     "service-worker.js": "/kama-social/service-worker.js",
     "static/css/10.1997bcc6.chunk.css.map": "/kama-social/static/css/10.1997bcc6.chunk.css.map",
     "static/css/4.1b82b591.chunk.css.map": "/kama-social/static/css/4.1b82b591.chunk.css.map",
@@ -49,9 +49,9 @@
     "static/media/react.png": "/kama-social/static/media/react.56cbceaf.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.68ee6a4b.js",
+    "static/js/runtime-main.44c763c0.js",
     "static/js/3.c41b9450.chunk.js",
     "static/css/main.44edfc03.chunk.css",
-    "static/js/main.b3dd7a78.chunk.js"
+    "static/js/main.0f07df48.chunk.js"
   ]
 }
