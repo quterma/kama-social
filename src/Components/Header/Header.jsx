@@ -12,6 +12,9 @@ const Header = props => {
 			<a className={styles.apiLink} target="_blank" rel="noopener noreferrer" href="https://social-network.samuraijs.com">
 				SamuraiJS Social Network API
 			</a>
+			<a className={styles.apiLink} target="_blank" rel="noopener noreferrer" href="https://quterma.github.io/kama-social">
+				https://quterma.github.io/kama-social
+			</a>
 			<div className={styles.loginWrapper}>
 				{props.isAuth ? (
 					<>

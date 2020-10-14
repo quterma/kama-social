@@ -9,7 +9,7 @@ const ProfileStatusWithHooks = props => {
 	const [status, setStatus] = useState(props.status);
 
 	// f() for activating edit mode (toggling editMode state in true)
-	const activateEditMode = () => setEditMode(true);
+	const activateEditMode = () => props.isOwner && setEditMode(true);
 	
 	// f() for deactivating edit mode (toggling editMode state in false and status 'dispatching' into store)
 	const deactivateEditMode = () => {
