@@ -1,2 +1,0 @@
-(this["webpackJsonpkama-social"]=this["webpackJsonpkama-social"]||[]).push([[9],{165:function(a,e,s){a.exports={wrapper:"News_wrapper__11kRW"}},168:function(a,e,s){"use strict";s.r(e);var r=s(0),n=s.n(r),p=s(165),t=s.n(p);e.default=function(){return n.a.createElement("div",{className:t.a.wrapper},"News")}}}]);
-//# sourceMappingURL=9.eb90d1b5.chunk.js.map

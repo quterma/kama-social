@@ -1,2 +1,0 @@
-(this["webpackJsonpkama-social"]=this["webpackJsonpkama-social"]||[]).push([[10],{163:function(t,a,n){t.exports={margin50:"Settings_margin50__1Fhq_"}},166:function(t,a,n){"use strict";n.r(a);var s=n(0),e=n.n(s),i=n(163),c=n.n(i);a.default=function(){return e.a.createElement("div",{className:c.a.settings},"Settings")}}}]);
-//# sourceMappingURL=10.656bfb68.chunk.js.map
