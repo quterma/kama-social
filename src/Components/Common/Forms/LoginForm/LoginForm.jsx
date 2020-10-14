@@ -4,14 +4,14 @@ import * as Yup from "yup";
 import styles from "./LoginForm.module.css";
 import { CustomInput, TextError } from "../CustomForms/CustomForms";
 
-const initialValues = { email: "", password: "", rememberMe: false };
+const initialValues = { email: "", password: "", rememberMe: false, captcha: '' };
 const validationSchema = Yup.object().shape({
 	email: Yup.string().email().required("Required!"),
 	password: Yup.string().min(8, "Too Short!").max(20, "Too Long!").required("Required!"),
 });
 
 // Formik Form Component
-const LoginForm = ({onSubmit, error}) => {
+const LoginForm = ({onSubmit, error, captchaUrl}) => {
 	return (
 		<Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
 			<Form>
@@ -23,6 +23,12 @@ const LoginForm = ({onSubmit, error}) => {
 					<Field type="checkbox" name="rememberMe" />
 					Remember Me
 				</label>
+				{captchaUrl &&
+					<>
+					<img src={captchaUrl} alt='captcha' />
+					<Field name='captcha' component={CustomInput} />
+					</>
+				}
 				{error && <h3 className={styles.error}>{error}</h3>}
 				<button className={styles.button} type="submit">
 					Login
