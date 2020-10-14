@@ -20,8 +20,20 @@ const News = React.lazy(() => import("./components/News/News"));
 
 // верхняя компонента
 class App extends Component {
+	handleAllUnhandledErrors = (reason, promise) => {
+		// вместо алерта надо сделать санку, которая будет диспатчить в стор ошибку, а потом сделать вывод окошка, к примеру
+		alert("some error");
+		// console.error(promiseRejectionEvent);
+	};
+
 	componentDidMount() {
 		this.props.initializeApp();
+
+		window.addEventListener("unhandledrejection", this.handleAllUnhandledErrors);
+	}
+
+	componentWillUnmount() {
+		window.removeEventListener("unhandledrejection", this.handleAllUnhandledErrors);
 	}
 
 	render() {
